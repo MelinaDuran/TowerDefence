@@ -7,6 +7,7 @@ public class NivelDos extends Nivel {
 		cantEnemigos = 11;
 		nroNivel = 2;
 		crearEnemigos();
+		//crearObstaculos(2);
 		System.out.println("NIVEL DOS");
 	}
 	

@@ -7,6 +7,7 @@ public class NivelUno extends Nivel {
 		cantEnemigos=6;
 		nroNivel = 1;
 		crearEnemigos();
+		//crearObstaculos(2);
 	}
 	
 	public Nivel pasarDeNivel(Mapa mapa) {

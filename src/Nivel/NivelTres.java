@@ -7,6 +7,7 @@ public class NivelTres extends Nivel {
 		super(m);
 		cantEnemigos = 15;
 		crearEnemigos();
+		//crearObstaculos(2);
 		nroNivel = 3;
 		System.out.println("NIVEL TRES");
 	}
