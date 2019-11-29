@@ -19,6 +19,7 @@ public class Escudo extends PowerUp {
 	public void aplicar(Personaje personaje) {
 		
 		personaje.setEstado(new ConEscudo());
+		System.out.println("tiene escudito");
 	}
 	
 	public void aplicar(List<Personaje> personajes) {

@@ -94,14 +94,15 @@ public class Juego {
 	public synchronized void insertarEnemigos() {	
 		LinkedList<Enemigo> enemigosNivel = nivel.getEnemigos();
 		PowerUp escudito= new Escudo();
-		double randomprote;
+		Random random = new Random();
+		int randomprote;
 		
 		
 		
 		if (!enemigosNivel.isEmpty()){	
 			Enemigo e = enemigosNivel.removeFirst();
-			randomprote= Math.random();
-			if(randomprote>0) {
+			randomprote= random.nextInt(2);
+			if(randomprote==1) {
 			escudito.aplicar(e);}
 			enemigos.add(e);
 			mapa.agregarEnemigo(e);
