@@ -2,6 +2,7 @@ package Main;
 
 import java.util.*;
 
+
 import java.awt.EventQueue;
 import GUI.ContadorTiempo;
 import GUI.GUI;
@@ -14,6 +15,8 @@ import Objetos.Personajes.torres.*;
 import Visitor.ataque.*;
 import Visitor.ataque.disparo.Disparo;
 import Visitor.ataque.disparo.ThreadDisparos;
+import Objetos.obstaculos.*;
+import Objetos.*;
 
 public class Juego {
 	private GUI gui;
@@ -31,6 +34,8 @@ public class Juego {
     private List<Disparo> disparos;
     
     private List<Enemigo> muertos;
+    
+    private List<Obstaculo> obstaculos;
 
 	public Juego() {
 		modoVenta = false;
@@ -38,6 +43,7 @@ public class Juego {
 		enemigos = new ArrayList<Enemigo>();
 		muertos = new ArrayList<Enemigo>();
 		disparos = new LinkedList<Disparo>();
+		obstaculos = new LinkedList<Obstaculo>();
 		
 		mapa = new Mapa();
 		
@@ -52,6 +58,8 @@ public class Juego {
 		threadDisparos = new ThreadDisparos(this);
 		tiempo.start();
 		threadDisparos.start();
+		
+		insertarObstaculos();
 		
 	}
 	
@@ -107,6 +115,21 @@ public class Juego {
 		}
 			
 
+	}
+	
+	public synchronized void insertarObstaculos() {
+		List<Obstaculo> obstaculosNivel = nivel.getObstaculos();
+		
+		if (!obstaculosNivel.isEmpty()){
+			
+			for(Obstaculo obstaculo : obstaculosNivel) {
+				obstaculos.add(obstaculo);
+				mapa.agregarObstaculo(obstaculo);
+				gui.agregarAlTablero(obstaculo.getLabel(), obstaculo.getCelda());
+			}
+			
+		}
+		
 	}
 	
 	private synchronized void agregarPersonaje(Torre torre, int fila, int columna) {
@@ -198,7 +221,7 @@ public class Juego {
 	{
 		if (!c.isEmpty())
 		{
-			Personaje p = c.getPersonaje();
+			Personaje p =  (Personaje) c.getPersonaje();
 			tienda = tienda + p.getMonedas();
 			p.setVida(0);
 			//p.setAtaque(0);
@@ -226,7 +249,9 @@ public class Juego {
 					  }else {
 						  //El enemigo ataca
 						  Ataque ataque = new CuerpoACuerpo(enemigo);
-						  nextCelda.getPersonaje().accept(ataque);							  
+						  Personaje p = (Personaje) nextCelda.getPersonaje();
+						  p.accept(ataque);
+						  //nextCelda.getPersonaje().accept(ataque);							  
 					  }			 	  
 				  	}
 				  else if(celda.getJ()==0) terminar(); //ESTO TERMINA EL JUEGO 
@@ -317,7 +342,8 @@ public class Juego {
 			  if (celdaActual.getJ()!=9  && this.getEstado() && disparo.getVida()) {
 				  Celda siguienteCelda = mapa.getCelda(celdaActual.getI(),celdaActual.getJ()+1);	  
 				  if (!siguienteCelda.isEmpty()) {
-					  siguienteCelda.getPersonaje().accept(disparo);
+					  Personaje personaje = (Personaje)siguienteCelda.getPersonaje();
+					  personaje.accept(disparo);
 				  }
 				  else {
 					  celdaActual.removeDisparo();
@@ -343,6 +369,7 @@ public class Juego {
 			deleteEnemigos();
 			deletePersonajes();
 			deleteDisparos();
+			deleteObstaculos();
 			gui.actualizarLabelOleada();	
 			
 		}
@@ -375,6 +402,15 @@ public class Juego {
 		}
 		
 		enemigos = new LinkedList<Enemigo>();
+	}
+	
+	private synchronized void deleteObstaculos() {
+		for(Obstaculo obstaculo : obstaculos) {
+			obstaculo.getCelda().removePersonaje();
+			gui.sacarDelTablero(obstaculo.getLabel());
+		}
+		
+		obstaculos = new LinkedList<Obstaculo>();
 	}
 	
 	

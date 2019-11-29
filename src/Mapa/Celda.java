@@ -1,13 +1,13 @@
 package Mapa;
 
 
-import Objetos.Personajes.*;
+import Objetos.*;
 import Visitor.ataque.disparo.Disparo;
 
 public class Celda {
    protected int posI;
    protected int posJ;
-   protected Personaje p;
+   protected GameObject p;
    protected Disparo disparo;
 	
    public Celda(int i, int j) {
@@ -15,11 +15,11 @@ public class Celda {
 	   posJ=j;
    }
    
-   public void addPersonaje(Personaje p) {
+   public void addPersonaje(GameObject p) {
 	   this.p=p;
    }
    
-   public Personaje getPersonaje() {
+   public GameObject getPersonaje() {
 	   return p;
    }
    
