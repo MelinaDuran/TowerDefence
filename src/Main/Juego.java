@@ -39,6 +39,7 @@ public class Juego {
     private List<Personaje> torres;
     private List<Enemigo> enemigos;
     private List<Disparo> disparos;
+    private List<Disparo> disparosEnemigos;
     private List<Enemigo> muertos;
     private List<Obstaculo> obstaculos;
 
@@ -50,6 +51,7 @@ public class Juego {
 		muertos = new ArrayList<Enemigo>();
 		disparos = new LinkedList<Disparo>();
 		obstaculos = new LinkedList<Obstaculo>();
+		disparosEnemigos = new LinkedList<Disparo>();
 		
 		mapa = new Mapa();
 		
@@ -136,6 +138,10 @@ public class Juego {
 	
 	 public synchronized void agregarDisparo(Disparo d) {
 	  	disparos.add(d);
+	 }
+	 
+	 public synchronized void agregarDisparoEnemigo(Disparo d) {
+		 disparosEnemigos.add(d);
 	 }
 	
 	//JUEGO FINALIZA: PERDÍ PORQUE ENEMIGOS LLEGARON A LA BASE
@@ -380,6 +386,34 @@ public class Juego {
 		  }
 	  removerDisparos();
 	}
+	
+	
+	
+	public synchronized void moverDisparosEnemigos() {
+		
+		  for (Disparo disparo: disparosEnemigos) {
+			  Celda celdaActual = disparo.getCelda();
+			  
+			  if (celdaActual.getJ()!=0  && this.getEstado() && disparo.getVida()) {
+				  Celda siguienteCelda = mapa.getCelda(celdaActual.getI(),celdaActual.getJ()-1);	  
+				  if (!siguienteCelda.isEmpty()) {
+					  Personaje personaje = (Personaje)siguienteCelda.getPersonaje();
+					  personaje.accept(disparo);
+				  }
+				  else {
+					  celdaActual.removeDisparo();
+					  siguienteCelda.addDisparo(disparo);
+					  disparo.setCelda(siguienteCelda);
+					  gui.agregarAlTablero(disparo.getLabel(), disparo.getCelda());
+				  } 
+			 }
+			  else disparo.setVida(false); //faltaba esto para que los disparos se remuevan cuando lleguen al final,
+			  							   // tambien lo hace en visitor pero al parecer no lo setea bien 
+			
+		  }
+	  removerDisparos();
+	}
+	
 	
 	//CAMBIA DE NIVEL: ACTUALIZA LOS ENEMIGOS Y LOS INSERTA
 	public synchronized void cambiarNivel() {
