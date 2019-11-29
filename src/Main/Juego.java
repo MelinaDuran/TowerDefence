@@ -214,10 +214,6 @@ public class Juego {
 	
 	public void clickSobrePowerUp()
 	{
-		//Random rnd = new Random();
-		//int aux = rnd.nextInt()%torres.size();
-		
-		//Personaje p = torres.get(aux);
 		powerUpActivo.aplicar(torres);
 	}
 	
@@ -253,8 +249,9 @@ public class Juego {
 		}
 	}
 	
-	/*Este método se responsabiliza de MOVER ENEMIGOS
-	 * */
+	/**
+	 * Mueve los enemigos del mapa. Se encarga, tambien, de cambiar de nivel cuando sea necesario.
+	 **/
 	public synchronized boolean moverEnemigos() {
 		if(!enemigos.isEmpty()) {
 		  for (Enemigo enemigo : enemigos) {
@@ -419,6 +416,10 @@ public class Juego {
 			deleteObstaculos();
 			gui.actualizarLabelOleada();	
 			
+		}
+		else
+		{
+			gui.mostrarMensajeGanador();
 		}
 	}
 	//METODO ENCARGADO DE ELIMINAR LOS PERSONAJES PARA ARRANCAR UN NUEVO NIVEL

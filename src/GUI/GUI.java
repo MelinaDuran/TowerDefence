@@ -168,7 +168,11 @@ public class GUI extends JFrame{
 		lblOleadas.setText(""+juego.getNivel().getNroNivel());
 	}
 //-----------------------COMANDOS------------------------------------------------------------------------/	
-
+public void mostrarMensajeGanador()
+{
+	JOptionPane.showMessageDialog(getContentPane(),"Ganador!");
+	System.exit(0);
+}
 //---------------------------BOTONES PARA COMPRAR TORRES-----------------------------------------------------/
 	private void inicializarBotonesTorres() {
 		torres = new JButton[5];
