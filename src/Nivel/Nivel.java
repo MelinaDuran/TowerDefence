@@ -27,7 +27,7 @@ public abstract class Nivel  {
 	}
 	
 	public void crearEnemigos(){
-		int rdm = random.nextInt(5); 
+		int rdm = random.nextInt(6); 
 		System.out.println("CREANDO LOS ENEMIGOS");
 		for (int i=0; i<cantEnemigos; i++) {
 			FabricaEnemigo fabrica;
@@ -47,6 +47,9 @@ public abstract class Nivel  {
 					break;
 				case 4:
 					fabrica = FabricaEnemigoLongMoan.getFabricaEnemigoLongMoan(); 
+					break;
+				case 5:
+					fabrica = FabricaEnemigoOctorok.getFabricaEnemigoOctorok();
 					break;
 				default:
 					fabrica = FabricaEnemigoStalfos.getFabricaEnemigoStalfos();
