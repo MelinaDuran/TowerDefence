@@ -5,8 +5,8 @@ public class NivelDos extends Nivel {
 	public NivelDos(Mapa m) {
 		super(m);
 		cantEnemigos = 11;
-		crearEnemigos();
 		nroNivel = 2;
+		crearEnemigos();
 		System.out.println("NIVEL DOS");
 	}
 	

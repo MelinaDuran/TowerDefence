@@ -47,11 +47,11 @@ public class ContadorTiempo extends Thread {
 					Thread.sleep(VELOCIDAD);
 				}
 				
-
+/*
 				if(juego.getEnemigos().isEmpty()) {
 					juego.cambiarNivel();
 				}
-	
+	*/
 		} catch (InterruptedException exc) {
 			exc.printStackTrace();
 		}
