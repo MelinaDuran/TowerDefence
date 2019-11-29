@@ -17,9 +17,7 @@ public abstract class Personaje extends GameObject {
 	protected Celda celda;
 	protected Icon spriteDisparo;
 	protected int tamanio;
-	protected JLabel secondLabel;
-
-	
+	protected JLabel secondLabel;	
 	protected Estado estado;
 	
 	private int precio;

@@ -3,6 +3,8 @@ import Factory.*;
 import Mapa.*;
 import Objetos.Personajes.enemigos.Enemigo;
 
+import Objetos.obstaculos.*;
+
 import java.util.*;
 
 public abstract class Nivel  {
@@ -14,11 +16,14 @@ public abstract class Nivel  {
 	protected FabricaEnemigo fEnemigos;
 	protected int nroNivel;
 	
+	protected List<Obstaculo> obstaculos;
+	
 	
 	public Nivel(Mapa m) {
 		mapa=m;
 		random = new Random();
 		enemigos = new LinkedList<Enemigo>();
+		obstaculos = new LinkedList<Obstaculo>();
 	}
 	
 	public void crearEnemigos(){
@@ -54,6 +59,11 @@ public abstract class Nivel  {
 		}
 	}
 	
+	
+	public void crearObstaculos() {
+		//ACA TENES QUE HACER ESTO PARA AGREGAR A LOS OBSTACULOS MELINASTI
+	}
+	
 	public Enemigo getNextEnemigo(){
 		if (enemigos.isEmpty()) 
 			return null;
@@ -65,11 +75,17 @@ public abstract class Nivel  {
 		return enemigos.isEmpty();
 	}
 	
+	
 	//Retorna la lista de enemigos correspondiente al nivel
 	public LinkedList<Enemigo> getEnemigos(){
 		return enemigos;
 		
 	}
+	
+	public List<Obstaculo> getObstaculos(){
+		return obstaculos;
+	}
+	
 	public abstract Nivel pasarDeNivel(Mapa mapa);
 	
 	public int getNroNivel() {return nroNivel;}

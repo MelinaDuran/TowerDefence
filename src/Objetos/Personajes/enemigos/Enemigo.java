@@ -19,7 +19,7 @@ public abstract class Enemigo extends Personaje{
 	public boolean tienePowerUp() {
 		Random random = new Random();
 		int rdm = random.nextInt(10);
-		if(rdm==3) tienePowerUp=true;
+		if(rdm<=3) tienePowerUp=true;
 		
 		return tienePowerUp;
 	}
@@ -74,6 +74,16 @@ public abstract class Enemigo extends Personaje{
 	
 	public int getMovimientoOriginal(){
 		return movimientoOriginal;
+	}
+	
+	public void setPowerUp(boolean b)
+	{
+		tienePowerUp = b;
+	}
+	
+	public boolean getTienePowerUp()
+	{
+		return tienePowerUp;
 	}
 	
 	public void morir()

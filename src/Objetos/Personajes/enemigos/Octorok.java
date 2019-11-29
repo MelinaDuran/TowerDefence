@@ -17,5 +17,6 @@ public class Octorok extends Enemigo
 		this.label = new JLabel(sprite);
 		this.movimientoOriginal = 1;
 		this.spriteDisparo = new ImageIcon("src/main/resources/Octorok/disparo.gif");
+		this.tienePowerUp = tienePowerUp();
 	}
 }

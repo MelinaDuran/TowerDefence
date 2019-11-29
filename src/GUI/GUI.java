@@ -22,6 +22,7 @@ public class GUI extends JFrame{
 	private JLabel displayMonedas;
 	private JLabel lblOleadas;
 	private JButton btnVender;
+	private JButton btnPowerUp;
 //-----------------------------------Atributos de Instancia-------------------------------------------------/
 	
 //-----------------------CONSTRUCTOR------------------------------------------------------------------------/	
@@ -64,6 +65,12 @@ public class GUI extends JFrame{
 		Monedas.setBounds(778, 508, 404, 145);
 		getContentPane().add(Monedas);
 		Monedas.setLayout(null);
+		
+		btnPowerUp = new JButton("");
+		btnPowerUp.setBounds(207, 11, 171, 41);
+		btnPowerUp.setEnabled(false);
+		btnPowerUp.addActionListener(new OyenteClickPowerUp());
+		Monedas.add(btnPowerUp);
 		
 		btnVender = new JButton("Vender");
 		btnVender.setBounds(207, 79, 171, 41);
@@ -148,6 +155,12 @@ public class GUI extends JFrame{
 			e.printStackTrace();
 		}
 
+	}
+	
+	public void actualizarBotonPowerUp(ImageIcon j)
+	{
+		btnPowerUp.setIcon(j);
+		btnPowerUp.setEnabled(true);
 	}
 	
 	public void actualizarLabelOleada()
@@ -272,8 +285,16 @@ public class GUI extends JFrame{
 	private class OyenteClickVenta implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			juego.clickSobreVender();
-		}
-		
+		}	
 	}
 	
+	private class OyenteClickPowerUp implements ActionListener {
+		public void actionPerformed(ActionEvent arg0)
+		{
+			juego.clickSobrePowerUp();
+			btnPowerUp.setIcon(null);
+			btnPowerUp.setEnabled(false);
+			repaint();
+		}
+	}
 }    

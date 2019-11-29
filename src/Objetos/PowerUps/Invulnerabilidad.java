@@ -4,11 +4,18 @@ import Objetos.Personajes.*;
 
 import java.util.*;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 public class Invulnerabilidad extends PowerUp{
 	
 	private ThreadInvulnerable escudo;
 	
-	public Invulnerabilidad() {}
+	public Invulnerabilidad() {
+		miIcono = new ImageIcon("src/Main/resources/Invulnerabilidad/idle1.gif");
+		miLabel = new JLabel("");
+		miLabel.setIcon(miIcono);
+	}
 	
 	public void aplicar(List<Personaje> personajes) {
 		escudo = new ThreadInvulnerable(personajes);

@@ -3,6 +3,7 @@ package Mapa;
 import Objetos.Personajes.enemigos.Enemigo;
 import Objetos.Personajes.torres.Torre;
 import java.util.Random;
+import Objetos.obstaculos.*;
 
 
 public class Mapa {
@@ -53,6 +54,15 @@ public class Mapa {
 	  		}
 	  	}
 	 }
+  }
+  
+  public void agregarObstaculo(Obstaculo obstaculo) {
+	  
+	  	int randomColumna = rdm.nextInt(10);
+	  	int randomFila = rdm.nextInt(6);
+		mapa[randomFila][randomColumna].addPersonaje(obstaculo);
+		obstaculo.setCelda(mapa[randomFila][randomColumna]);
+	  
   }
   
   public Celda celdaArriba(Celda c)

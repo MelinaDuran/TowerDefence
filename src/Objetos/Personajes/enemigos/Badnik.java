@@ -14,5 +14,6 @@ public class Badnik extends Enemigo{
 		this.rango = 0;
 		this.label = new JLabel(sprite);
 		this.movimientoOriginal = 1;
+		this.tienePowerUp = tienePowerUp();
 	}	
 }
