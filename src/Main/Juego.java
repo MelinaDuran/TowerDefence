@@ -9,7 +9,6 @@ import GUI.GUI;
 import Mapa.Celda;
 import Mapa.Mapa;
 import Nivel.*;
-import Objetos.MapObject;
 import Objetos.Personajes.*;
 import Objetos.Personajes.enemigos.*;
 import Objetos.Personajes.torres.*;

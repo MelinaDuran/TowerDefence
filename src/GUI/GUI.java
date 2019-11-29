@@ -101,7 +101,7 @@ public class GUI extends JFrame{
 		getContentPane().setLayout(null);		
 
 		JPanel Fondo = new JPanel();
-		Fondo.setBounds(0, -10, 1182, 530);
+		Fondo.setBounds(0, -10, 1177, 530);
 		getContentPane().add(Fondo);
 		
 		JLabel Background = new JLabel("");
@@ -117,20 +117,23 @@ public class GUI extends JFrame{
 		lblObjetosComprables.setBounds(0, 0, 202, 57);
 		Comprables.add(lblObjetosComprables);
 		
-		JButton btnComprable = new JButton("Comprable 1");
-		btnComprable.setBounds(0, 59, 202, 149);
-		Comprables.add(btnComprable);
-		btnComprable.addActionListener(new OyenteComprarBomba());
+		JButton botonBomba = new JButton("");
+		botonBomba.setIcon(new ImageIcon("src/Main/resources/Comprables/Bomba/botonBomba.gif"));
+		botonBomba.setBounds(0, 59, 202, 149);
+		Comprables.add(botonBomba);
+		botonBomba.addActionListener(new OyenteComprarBomba());
 		
-		JButton btnComprable_1 = new JButton("Comprable 2");
-		btnComprable_1.setBounds(0, 208, 202, 149);
-		Comprables.add(btnComprable_1);
-		btnComprable_1.addActionListener(new OyenteComprarBarrera());
+		JButton botonBarrera = new JButton("");
+		botonBarrera.setIcon(new ImageIcon("src/Main/resources/Comprables/Barricada/botonBarrera.gif"));
+		botonBarrera.setBounds(0, 208, 202, 149);
+		Comprables.add(botonBarrera);
+		botonBarrera.addActionListener(new OyenteComprarBarrera());
 		
-		JButton btnComprable_2 = new JButton("Comprable 3");
-		btnComprable_2.setBounds(0, 356, 202, 149);
-		Comprables.add(btnComprable_2);
-		btnComprable_2.addActionListener(new OyenteComprarBoostVida()); 
+		JButton botonVida = new JButton("");
+		botonVida.setIcon(new ImageIcon("src/Main/resources/Comprables/Vida/botonVida.png"));
+		botonVida.setBounds(0, 356, 202, 149);
+		Comprables.add(botonVida);
+		botonVida.addActionListener(new OyenteComprarBoostVida()); 
 		
 		JButton btnComprable_3 = new JButton("Comprable 4");
 		btnComprable_3.setBounds(0, 504, 202, 149);
