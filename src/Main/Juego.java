@@ -250,8 +250,7 @@ public class Juego {
 						  //El enemigo ataca
 						  Ataque ataque = new CuerpoACuerpo(enemigo);
 						  Personaje p = (Personaje) nextCelda.getPersonaje();
-						  p.accept(ataque);
-						  //nextCelda.getPersonaje().accept(ataque);							  
+						  p.accept(ataque);							  
 					  }			 	  
 				  	}
 				  else if(celda.getJ()==0) terminar(); //ESTO TERMINA EL JUEGO 
