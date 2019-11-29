@@ -17,7 +17,6 @@ import Visitor.ataque.disparo.Disparo;
 import Visitor.ataque.disparo.ThreadDisparos;
 import Objetos.PowerUps.*;
 import Objetos.obstaculos.*;
-import Objetos.*;
 
 
 public class Juego {
