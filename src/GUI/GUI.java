@@ -321,8 +321,7 @@ public void mostrarMensajeGanador()
 	}
 	
 	private class OyenteClickPowerUp implements ActionListener {
-		public void actionPerformed(ActionEvent arg0)
-		{
+		public void actionPerformed(ActionEvent arg0){
 			juego.clickSobrePowerUp();
 			btnPowerUp.setIcon(null);
 			btnPowerUp.setEnabled(false);
@@ -343,10 +342,9 @@ public void mostrarMensajeGanador()
 	private class OyenteComprarBarrera implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			if(Integer.parseInt(juego.getMonedas())>499) { 
-			juego.clickSobreComprableBarrera();
-			cantMonedas.setText(juego.getMonedas());
+				juego.clickSobreComprableBarrera();
+				cantMonedas.setText(juego.getMonedas());
 			}
-
 		}
 	}
 	

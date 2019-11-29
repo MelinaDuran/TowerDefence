@@ -40,9 +40,7 @@ public class Juego {
     private List<Personaje> torres;
     private List<Enemigo> enemigos;
     private List<Disparo> disparos;
-    
     private List<Enemigo> muertos;
-    
     private List<Obstaculo> obstaculos;
 
 	public Juego() {
@@ -108,7 +106,7 @@ public class Juego {
 		List<Obstaculo> obstaculosNivel = nivel.getObstaculos();
 		
 		if (!obstaculosNivel.isEmpty()){
-			
+			System.out.println("EJECUTANDO EL INSERTAR OBSTACULOS");
 			for(Obstaculo obstaculo : obstaculosNivel) {
 				obstaculos.add(obstaculo);
 				mapa.agregarObstaculo(obstaculo);
@@ -161,6 +159,10 @@ public class Juego {
 				gui.sacarDelTablero(powerUpActivo.getLabel());
 			}
 		}
+		if(comprable!=null) { //ACA SE AGREGARIA AL MAPA UN OBJETO QUE COMPRAS
+			mapa.agregarComprable(fila,columna, comprable);
+			comprable=null;
+		}
 	}
 
 	public void clickSobrePEF() {
@@ -188,11 +190,11 @@ public class Juego {
 		tienda = tienda-ultimoComprado.getPrecio();
 	}
 	
+	//HAY QUE APLICARLOS SOBRE LOS JUGADORES O EL MAPA 
 	public void clickSobreComprableBomba() {
 		comprable = new Bomba();
 		tienda = tienda - comprable.getPrecio();
 	}
-	
 	
 	public void clickSobreComprableBarrera() {
 		comprable = new Barrera();
@@ -203,7 +205,7 @@ public class Juego {
 		comprable = new BoostVida();
 		tienda = tienda - comprable.getPrecio();
 	}
-	
+	//////////////////////////////////////////////////////
 	public void clickSobreVender() {modoVenta = true;}
 	
 	public void clickSobrePowerUp(){powerUpActivo.aplicar(torres);}
@@ -223,11 +225,6 @@ public class Juego {
 			Personaje p =  (Personaje) c.getPersonaje();
 			tienda = tienda + p.getMonedas();
 			p.setVida(0);
-			//p.setAtaque(0);
-			//p.setCelda(null);
-			//p.setEstado(null);
-			//p.setSprite(null);
-			//p.setVelocidadDeAtaque(0);
 		}
 	}
 	

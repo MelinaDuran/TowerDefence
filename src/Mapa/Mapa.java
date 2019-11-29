@@ -2,6 +2,8 @@ package Mapa;
 
 import Objetos.Personajes.enemigos.Enemigo;
 import Objetos.Personajes.torres.Torre;
+import Objetos.comprables.Comprable;
+
 import java.util.Random;
 import Objetos.obstaculos.*;
 
@@ -63,6 +65,10 @@ public class Mapa {
 		mapa[randomFila][randomColumna].addPersonaje(obstaculo);
 		obstaculo.setCelda(mapa[randomFila][randomColumna]);
 	  
+  }
+  
+  public void agregarComprable(int fila, int columna, Comprable comprable) {
+	  mapa[fila][columna].addPersonaje(comprable);
   }
   
   public Celda celdaArriba(Celda c)
