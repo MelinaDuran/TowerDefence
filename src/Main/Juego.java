@@ -23,8 +23,8 @@ public class Juego {
     private Nivel nivel;
     private Torre ultimoComprado;
     private int tienda; 
-    private boolean estado;
-    
+    private boolean estado;    
+    private boolean modoVenta;
     
     private List<Personaje> torres;
     private List<Enemigo> enemigos;
@@ -33,7 +33,7 @@ public class Juego {
     private List<Enemigo> muertos;
 
 	public Juego() {
-		
+		modoVenta = false;
 		torres = new LinkedList<Personaje>();
 		enemigos = new ArrayList<Enemigo>();
 		muertos = new ArrayList<Enemigo>();
@@ -171,6 +171,42 @@ public class Juego {
 		tienda = tienda-ultimoComprado.getPrecio();
 	}
 	
+	public void clickSobreVender() {
+		modoVenta = true;
+	}
+	
+	public Celda seleccionarVenta(int fila, int columna)
+	{
+		Celda toReturn;
+		toReturn = mapa.getCelda(fila, columna);
+		return toReturn;
+	}
+	
+	public boolean getModoVenta()
+	{
+		return modoVenta;
+	}
+	
+	public void setModoVenta(boolean b)
+	{
+		modoVenta = b;
+	}
+	
+	public void vender(Celda c)
+	{
+		if (!c.isEmpty())
+		{
+			Personaje p = c.getPersonaje();
+			tienda = tienda + p.getMonedas();
+			p.setVida(0);
+			//p.setAtaque(0);
+			//p.setCelda(null);
+			//p.setEstado(null);
+			//p.setSprite(null);
+			//p.setVelocidadDeAtaque(0);
+		}
+	}
+	
 	/*Este método se responsabiliza de MOVER ENEMIGOS
 	 * */
 	
@@ -242,12 +278,14 @@ public class Juego {
 			  torres.remove(muerto);
 			  muerto.getCelda().removePersonaje();
 			  
-			  Celda aux = mapa.getCelda(muerto.getCeldaSecundaria().getI(), muerto.getCeldaSecundaria().getJ());
 			  if (muerto.getTamanio() == 2)
+			  {
+				  Celda aux = mapa.getCelda(muerto.getCeldaSecundaria().getI(), muerto.getCeldaSecundaria().getJ());
+				  gui.sacarDelTablero(muerto.getSecondLabel());
 				  aux.removePersonaje();
+			  }
 				  
 			  gui.sacarDelTablero(muerto.getLabel());
-			  gui.sacarDelTablero(muerto.getSecondLabel());
 			  gui.refrescarTienda();  
 		  }
 	}
@@ -300,13 +338,11 @@ public class Juego {
 		this.nivel=nivel.pasarDeNivel(mapa);
 		
 		if (nivel!=null) {
-			System.out.println("ESTOY CAMBIANDO EL NIVEL");
+			
 			enemigos = nivel.getEnemigos();
-			System.out.println("TAMANIO LISTA ENEMIGOS" + enemigos.size());
 			deletePersonajes();
 			deleteDisparos();
-			gui.actualizarLabelOleada();
-			//tiempo = new ContadorTiempo(this);
+			gui.actualizarLabelOleada();	
 			
 		}
 	}

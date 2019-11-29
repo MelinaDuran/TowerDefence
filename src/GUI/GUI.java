@@ -203,15 +203,14 @@ public class GUI extends JFrame{
 			int ancho = Tablero.getWidth()/10;
 			int alto = Tablero.getHeight()/6;
 			int columna = e.getX()/ancho;
-			int fila = e.getY()/alto;
-
-			/*if (juego.getModoVenta())
+			int fila = e.getY()/alto; 
+			if (juego.getModoVenta())
 			{
 				Celda c = juego.seleccionarVenta(fila, columna);
 				juego.vender(c);
 				juego.setModoVenta(false);
 			}
-			else*/
+			else
 			{
 				juego.clickSobreTablero(fila, columna);
 			}
@@ -272,7 +271,7 @@ public class GUI extends JFrame{
 	
 	private class OyenteClickVenta implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			//juego.clickSobreVender();
+			juego.clickSobreVender();
 		}
 		
 	}
