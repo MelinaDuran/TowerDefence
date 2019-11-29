@@ -95,9 +95,11 @@ public class Juego {
 	 * Agrega todos los enemigos correspondientes al nivel
 	 */
 	public synchronized void insertarEnemigos() {
+		
 		LinkedList<Enemigo> enemigosNivel = nivel.getEnemigos();
-		if (!enemigosNivel.isEmpty())
-		{
+		
+		if (!enemigosNivel.isEmpty()){
+			
 			Enemigo e = enemigosNivel.removeFirst();
 			enemigos.add(e);
 			mapa.agregarEnemigo(e);
@@ -209,8 +211,6 @@ public class Juego {
 	
 	/*Este método se responsabiliza de MOVER ENEMIGOS
 	 * */
-	
-	///
 	public synchronized boolean moverEnemigos() {
 		if(!enemigos.isEmpty()) {
 		  for (Enemigo enemigo : enemigos) {
@@ -235,6 +235,7 @@ public class Juego {
 		  return true;
 		} else {// se murieron enmegios 2 cosas: 1 pase de nivel o gane el juego
 			System.out.println("fin de nivel");
+			this.cambiarNivel();
 			return false;
 		}
 }
@@ -257,10 +258,10 @@ public class Juego {
 			  gui.refrescarTienda();  
 		  }
 		  
-		  
+		  /*
 		  if (enemigos.isEmpty())
 			  cambiarNivel();
-		  
+		  */
 		  if(torres.size()>3) {
 			  //asignarPowerUp();
 		  }
@@ -339,7 +340,7 @@ public class Juego {
 		
 		if (nivel!=null) {
 			
-			enemigos = nivel.getEnemigos();
+			deleteEnemigos();
 			deletePersonajes();
 			deleteDisparos();
 			gui.actualizarLabelOleada();	
@@ -364,6 +365,16 @@ public class Juego {
 			disparo.getCelda().removeDisparo();
 			gui.sacarDelTablero(disparo.getLabel());
 		}
+	}
+	
+	private synchronized void deleteEnemigos() {
+		
+		for(Enemigo enemigo: enemigos) {
+			enemigo.getCelda().removePersonaje();
+			gui.sacarDelTablero(enemigo.getLabel());
+		}
+		
+		enemigos = new LinkedList<Enemigo>();
 	}
 	
 	
