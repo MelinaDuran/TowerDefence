@@ -35,7 +35,7 @@ public class GUI extends JFrame{
 		inicializarGUI();
 		inicializarBotonesTorres();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1200, 702);
+		setBounds(100, 100, 1400, 702);
 		this.setVisible(true);
 	}	
 
@@ -107,6 +107,34 @@ public class GUI extends JFrame{
 		JLabel Background = new JLabel("");
 		Background.setIcon(new ImageIcon("src/Main/resources/Mapa.jpg"));
 		Fondo.add(Background);
+		
+		JPanel Comprables = new JPanel();
+		Comprables.setBounds(1180, 0, 202, 653);
+		getContentPane().add(Comprables);
+		Comprables.setLayout(null);
+		
+		JLabel lblObjetosComprables = new JLabel("Objetos Comprables");
+		lblObjetosComprables.setBounds(0, 0, 202, 57);
+		Comprables.add(lblObjetosComprables);
+		
+		JButton btnComprable = new JButton("Comprable 1");
+		btnComprable.setBounds(0, 59, 202, 149);
+		Comprables.add(btnComprable);
+		btnComprable.addActionListener(new OyenteComprarBomba());
+		
+		JButton btnComprable_1 = new JButton("Comprable 2");
+		btnComprable_1.setBounds(0, 208, 202, 149);
+		Comprables.add(btnComprable_1);
+		btnComprable_1.addActionListener(new OyenteComprarBarrera());
+		
+		JButton btnComprable_2 = new JButton("Comprable 3");
+		btnComprable_2.setBounds(0, 356, 202, 149);
+		Comprables.add(btnComprable_2);
+		btnComprable_2.addActionListener(new OyenteComprarBoostVida()); 
+		
+		JButton btnComprable_3 = new JButton("Comprable 4");
+		btnComprable_3.setBounds(0, 504, 202, 149);
+		Comprables.add(btnComprable_3);
 	}
 	
 //-----------------------CONSTRUCTOR------------------------------------------------------------------------/	
@@ -301,4 +329,34 @@ public void mostrarMensajeGanador()
 			repaint();
 		}
 	}
+	
+	private class OyenteComprarBomba implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			if(Integer.parseInt(juego.getMonedas())>499) {
+				juego.clickSobreComprableBomba();
+				cantMonedas.setText(juego.getMonedas());
+
+			}
+		}
+	}
+	
+	private class OyenteComprarBarrera implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			if(Integer.parseInt(juego.getMonedas())>499) { 
+			juego.clickSobreComprableBarrera();
+			cantMonedas.setText(juego.getMonedas());
+			}
+
+		}
+	}
+	
+	private class OyenteComprarBoostVida implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			if(Integer.parseInt(juego.getMonedas())>499) {
+				juego.clickSobreComprableBoostVida();
+				cantMonedas.setText(juego.getMonedas());
+			}
+		}
+	}
+	
 }    

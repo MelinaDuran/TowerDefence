@@ -9,6 +9,7 @@ import GUI.GUI;
 import Mapa.Celda;
 import Mapa.Mapa;
 import Nivel.*;
+import Objetos.MapObject;
 import Objetos.Personajes.*;
 import Objetos.Personajes.enemigos.*;
 import Objetos.Personajes.torres.*;
@@ -16,6 +17,10 @@ import Visitor.ataque.*;
 import Visitor.ataque.disparo.Disparo;
 import Visitor.ataque.disparo.ThreadDisparos;
 import Objetos.PowerUps.*;
+import Objetos.comprables.Barrera;
+import Objetos.comprables.Bomba;
+import Objetos.comprables.BoostVida;
+import Objetos.comprables.Comprable;
 import Objetos.obstaculos.*;
 
 
@@ -30,6 +35,7 @@ public class Juego {
     private boolean estado;    
     private boolean modoVenta;
     private PowerUp powerUpActivo;
+    private Comprable comprable;
     
     private List<Personaje> torres;
     private List<Enemigo> enemigos;
@@ -66,58 +72,36 @@ public class Juego {
 		
 	}
 	
-	public List<Enemigo> getEnemigos(){
-		return enemigos;
-	}
+	public List<Enemigo> getEnemigos(){return enemigos;}
 	
-	public List<Personaje> getTorres(){
-		return torres;
-	}
+	public List<Personaje> getTorres(){return torres;}
 	
-	public List<Disparo> getDisparos(){
-		return disparos;
-	}
+	public List<Disparo> getDisparos(){return disparos;}
 	
-	public Nivel getNivel() {
-		return nivel;
-	}
+	public Nivel getNivel() {return nivel;}
 	
-	public boolean getEstado() {
-		return estado;
-	}
+	public boolean getEstado() {return estado;}
 	
-	public Mapa getMapa() {
-		return mapa;
-	}
+	public Mapa getMapa() {return mapa;}
 	
-	public GUI getGUI() {
-		return gui;
-	}
+	public GUI getGUI() {return gui;}
 	
-	public String getMonedas() {
-		return Integer.toString(tienda);
-	}
+	public String getMonedas() {return Integer.toString(tienda);}
 	
-	public void setMonedas(int m) {
-		tienda = tienda + m;
-	}
+	public void setMonedas(int m) {tienda = tienda + m;}
 
 	/**
 	 * Agrega todos los enemigos correspondientes al nivel
 	 */
-	public synchronized void insertarEnemigos() {
-		
+	public synchronized void insertarEnemigos() {	
 		LinkedList<Enemigo> enemigosNivel = nivel.getEnemigos();
 		
-		if (!enemigosNivel.isEmpty()){
-			
+		if (!enemigosNivel.isEmpty()){	
 			Enemigo e = enemigosNivel.removeFirst();
 			enemigos.add(e);
 			mapa.agregarEnemigo(e);
 			gui.agregarAlTablero(e.getLabel(),e.getCelda());
 		}
-			
-
 	}
 	
 	public synchronized void insertarObstaculos() {
@@ -161,20 +145,16 @@ public class Juego {
 		if(ultimoComprado!=null) {
 			if (ultimoComprado.getTamanio() == 1)
 				this.agregarPersonaje(ultimoComprado, fila, columna);
-			else
-			{
-				if (mapa.getCelda(fila-1, columna).isEmpty())
-				{
+			else{
+				if (mapa.getCelda(fila-1, columna).isEmpty()){
 					this.agregarPersonaje(ultimoComprado, fila, columna);
 					this.agregarPersonaje(ultimoComprado, ultimoComprado.getCeldaSecundaria().getI()-2, ultimoComprado.getCeldaSecundaria().getJ());
 				}
 			}
 			ultimoComprado=null;
 		}
-		else
-		{
-			if (mapa.getCelda(fila, columna).getPowerUp() != null)
-			{
+		else{
+			if (mapa.getCelda(fila, columna).getPowerUp() != null){
 				powerUpActivo = mapa.getCelda(fila, columna).getPowerUp();
 				gui.actualizarBotonPowerUp(powerUpActivo.getIcon());
 				mapa.getCelda(fila, columna).addPowerUp(null);
@@ -208,36 +188,38 @@ public class Juego {
 		tienda = tienda-ultimoComprado.getPrecio();
 	}
 	
-	public void clickSobreVender() {
-		modoVenta = true;
+	public void clickSobreComprableBomba() {
+		comprable = new Bomba();
+		tienda = tienda - comprable.getPrecio();
 	}
 	
-	public void clickSobrePowerUp()
-	{
-		powerUpActivo.aplicar(torres);
+	
+	public void clickSobreComprableBarrera() {
+		comprable = new Barrera();
+		tienda = tienda - comprable.getPrecio();
 	}
 	
-	public Celda seleccionarVenta(int fila, int columna)
-	{
+	public void clickSobreComprableBoostVida() {
+		comprable = new BoostVida();
+		tienda = tienda - comprable.getPrecio();
+	}
+	
+	public void clickSobreVender() {modoVenta = true;}
+	
+	public void clickSobrePowerUp(){powerUpActivo.aplicar(torres);}
+	
+	public Celda seleccionarVenta(int fila, int columna){
 		Celda toReturn;
 		toReturn = mapa.getCelda(fila, columna);
 		return toReturn;
 	}
 	
-	public boolean getModoVenta()
-	{
-		return modoVenta;
-	}
+	public boolean getModoVenta(){return modoVenta;}
 	
-	public void setModoVenta(boolean b)
-	{
-		modoVenta = b;
-	}
+	public void setModoVenta(boolean b){modoVenta = b;}
 	
-	public void vender(Celda c)
-	{
-		if (!c.isEmpty())
-		{
+	public void vender(Celda c){
+		if (!c.isEmpty()){
 			Personaje p =  (Personaje) c.getPersonaje();
 			tienda = tienda + p.getMonedas();
 			p.setVida(0);
@@ -326,14 +308,7 @@ public class Juego {
 			  muerto.morir();
 			  gui.refrescarTienda();  
 		  }
-		  
-		  /*
-		  if (enemigos.isEmpty())
-			  cambiarNivel();
-		  */
-		  if(torres.size()>3) {
-			  //asignarPowerUp();
-		  }
+
 	}
 	
 	private synchronized void removerTorresMuertas() {
