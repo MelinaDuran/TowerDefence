@@ -60,8 +60,18 @@ public abstract class Nivel  {
 	}
 	
 	
-	public void crearObstaculos() {
+	public void crearObstaculos(int cantidad) {
 		//ACA TENES QUE HACER ESTO PARA AGREGAR A LOS OBSTACULOS MELINASTI
+		int rdm = random.nextInt(1);
+		while(obstaculos.size()<cantidad) {
+			if(rdm==0)
+				obstaculos.add(new Piedra());
+			else
+				if(rdm==1)
+					obstaculos.add(new Agujero());
+			rdm = random.nextInt(1);
+			}
+		
 	}
 	
 	public Enemigo getNextEnemigo(){
