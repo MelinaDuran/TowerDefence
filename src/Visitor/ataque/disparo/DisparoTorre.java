@@ -43,6 +43,5 @@ public class DisparoTorre extends Disparo {
 	public void visitarBomba(Comprable personaje) {
 		// TODO Auto-generated method stub
 		
-	}
-	
+	}	
 }

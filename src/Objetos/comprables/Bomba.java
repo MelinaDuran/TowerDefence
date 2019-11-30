@@ -3,16 +3,19 @@ package Objetos.comprables;
 import javax.swing.ImageIcon;
 
 import Main.Juego;
+import Objetos.GameObject;
+import Objetos.Personajes.Personaje;
 import Visitor.ataque.Ataque;
 
 public class Bomba extends Comprable {
 	
 	public Bomba(Juego j) {
 		precio = 1000;
-		vida=0; //no se usa
+		vida=20; //no se usa
 		sprite = new ImageIcon("src/Main/resources/Comprables/Bomba/bomba.png");
 		label.setIcon(sprite);
 		miJuego = j;
+		activable = true;
 	}
 
 	@Override
@@ -24,8 +27,6 @@ public class Bomba extends Comprable {
 
 	@Override
 	public void aceptar(Ataque ataque) {
-		// TODO Auto-generated method stub
-		
-	}
-	
+		ataque.visitarBomba(this);
+	}	
 }

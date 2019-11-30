@@ -334,7 +334,7 @@ public void mostrarMensajeGanador()
 	
 	private class OyenteComprarBomba implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			if(Integer.parseInt(juego.getMonedas())>499) {
+			if(Integer.parseInt(juego.getMonedas())>=1000) {
 				juego.clickSobreComprableBomba();
 				cantMonedas.setText(juego.getMonedas());
 
@@ -344,7 +344,7 @@ public void mostrarMensajeGanador()
 	
 	private class OyenteComprarBarrera implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			if(Integer.parseInt(juego.getMonedas())>499) { 
+			if(Integer.parseInt(juego.getMonedas())>=750) { 
 				juego.clickSobreComprableBarrera();
 				cantMonedas.setText(juego.getMonedas());
 			}
@@ -353,7 +353,7 @@ public void mostrarMensajeGanador()
 	
 	private class OyenteComprarBoostVida implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			if(Integer.parseInt(juego.getMonedas())>499) {
+			if(Integer.parseInt(juego.getMonedas())>=550) {
 				juego.clickSobreComprableBoostVida();
 				cantMonedas.setText(juego.getMonedas());
 			}

@@ -13,7 +13,6 @@ public class CuerpoACuerpo extends Ataque {
 	public void visitarTorre(Personaje personaje) {
 		//Le estoy restando la vida a una torre
 		personaje.restarVida(this.getAtaque());
-		System.out.println("LE PEGUE "+this.getAtaque()+" "+personaje.getVida());
 	}
 
 	public void visitarEnemigo(Personaje Personaje) {
@@ -28,18 +27,13 @@ public class CuerpoACuerpo extends Ataque {
 
 	@Override
 	public void visitarBarricada(Comprable personaje) {
-		personaje.setVida(personaje.getVida() - this.getAtaque());
+			personaje.setVida(personaje.getVida() - this.getAtaque());
+			System.out.println("VIDA BARRERA:"+personaje.getVida());
 	}
+		
 
 	@Override
 	public void visitarBomba(Comprable personaje) {
-		// TODO Auto-generated method stub
 		
 	}
-	
-	
-	
-	
-	
-
 }

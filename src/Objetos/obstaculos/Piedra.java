@@ -2,6 +2,8 @@ package Objetos.obstaculos;
 
 import javax.swing.ImageIcon;
 
+import Objetos.GameObject;
+import Objetos.Personajes.Personaje;
 import Visitor.ataque.Ataque;
 
 public class Piedra extends Obstaculo {

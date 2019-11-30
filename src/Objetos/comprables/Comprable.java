@@ -8,6 +8,7 @@ public abstract class Comprable extends MapObject {
 	protected int precio; 
 	protected int vida;
 	protected Juego miJuego;
+	protected boolean activable;
 	
 	public int getPrecio() {
 		return precio;
@@ -28,4 +29,6 @@ public abstract class Comprable extends MapObject {
 	public abstract void activar();		
 	
 	public abstract void aceptar(Ataque a);
+	
+	public boolean getActivable() {return activable;}
 }

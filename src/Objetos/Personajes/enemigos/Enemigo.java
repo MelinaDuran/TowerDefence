@@ -2,6 +2,7 @@ package Objetos.Personajes.enemigos;
 import java.util.Random;
 
 import Mapa.*;
+import Objetos.GameObject;
 import Objetos.Personajes.Personaje;
 import Visitor.ataque.*;
 import Visitor.ataque.disparo.Disparo;
@@ -97,4 +98,5 @@ public abstract class Enemigo extends Personaje{
 		sprite = null;
 		rango = 0;
 	}
+	
 }

@@ -250,11 +250,16 @@ public class Juego {
 		if(!enemigos.isEmpty()) {
 		  for (Enemigo enemigo : enemigos) {
 			  Celda celda = enemigo.getCelda();
-			  
-			  if (celda!=null && celda.getComprable() == null && (!enemigo.estaMuerto())) {
+			  if (celda.getComprable() != null && celda.getComprable().getActivable())
+			  {
+				  celda.getComprable().activar();
+				  gui.sacarDelTablero(celda.getComprable().getLabel());
+				  celda.setComprable(null);
+			  }
+			  if (celda!=null && (!enemigo.estaMuerto())) {
 				  if(celda.getJ()!=0) { 
 					  Celda nextCelda = mapa.getCelda(celda.getI(), celda.getJ()-1);
-				 	  if(nextCelda.isEmpty()) {
+				 	  if(nextCelda.isEmpty() && nextCelda.getComprable() == null) {
 						  celda.removePersonaje();			  
 						  nextCelda.addPersonaje(enemigo);
 						  enemigo.setCelda(nextCelda);
@@ -262,10 +267,31 @@ public class Juego {
 					  }else {
 						  //El enemigo ataca
 						  Ataque ataque = new CuerpoACuerpo(enemigo);
-						  Personaje p = (Personaje) nextCelda.getPersonaje();
-						  celda.getComprable().aceptar(ataque);  
-						  System.out.println("ASDASDASDASD");
-						  p.accept(ataque);							  
+						  if (nextCelda.getPersonaje() != null) {
+							  Personaje p = nextCelda.getPersonaje();
+							  p.accept(ataque);	
+						  }
+						  
+						  if (nextCelda.getComprable()!= null && !(nextCelda.getComprable().getActivable())) {
+							  Comprable c = nextCelda.getComprable();
+							  c.aceptar(ataque);
+							  if (c.getVida() < 1)
+							  {
+								  gui.sacarDelTablero(c.getLabel());
+								  nextCelda.setComprable(null);
+							  }
+						  }
+						  else
+						  {
+							  if (nextCelda.getComprable() != null && nextCelda.getComprable().getActivable())
+							  {
+								  celda.removePersonaje();			  
+								  nextCelda.addPersonaje(enemigo);
+								  enemigo.setCelda(nextCelda);
+								  gui.agregarAlTablero(enemigo.getLabel(), enemigo.getCelda());
+							  }
+						  }
+							  						  
 					  }			 	  
 				  	}
 				  else if(celda.getJ()==0) terminar(); //ESTO TERMINA EL JUEGO 
@@ -395,6 +421,7 @@ public class Juego {
 				  if (!siguienteCelda.isEmpty()) {
 					  Personaje personaje = (Personaje)siguienteCelda.getPersonaje();
 					  personaje.accept(disparo);
+					  
 				  }
 				  else {
 					  celdaActual.removeDisparo();
@@ -424,6 +451,10 @@ public class Juego {
 					  personaje.accept(disparo);
 				  }
 				  else {
+					  
+					  if (siguienteCelda.getComprable() != null && !siguienteCelda.getComprable().getActivable())
+						  siguienteCelda.getComprable().aceptar(disparo);
+					  
 					  celdaActual.removeDisparo();
 					  siguienteCelda.addDisparo(disparo);
 					  disparo.setCelda(siguienteCelda);

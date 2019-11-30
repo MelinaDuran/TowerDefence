@@ -1,6 +1,7 @@
 package Objetos.Personajes.torres;
 
 import Mapa.*;
+import Objetos.GameObject;
 import Objetos.Personajes.Personaje;
 import Visitor.ataque.*;
 import Visitor.ataque.disparo.Disparo;
@@ -34,6 +35,8 @@ public abstract class Torre extends Personaje{
 	public Disparo atacar() {
 		return estado.disparar(this);
 	}
+	
+	public void aceptar(GameObject p) {}
 	
 	public void accept(Ataque ataque) {
 		ataque.visitarTorre(this);

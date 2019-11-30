@@ -4,6 +4,7 @@ import javax.swing.ImageIcon;
 
 import Main.Juego;
 import Objetos.GameObject;
+import Objetos.Personajes.Personaje;
 import Visitor.ataque.Ataque;
 
 public class Barrera extends Comprable{
@@ -14,6 +15,7 @@ public class Barrera extends Comprable{
 		sprite = new ImageIcon("src/Main/resources/Comprables/Barricada/idle1.png");
 		label.setIcon(sprite);
 		miJuego = j;
+		activable = false;
 	}
 	
 	public void recibirDanio(int ataque) {
