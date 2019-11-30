@@ -62,13 +62,13 @@ public class Mapa {
 	  
 	  	int randomColumna = rdm.nextInt(10);
 	  	int randomFila = rdm.nextInt(6);
-		mapa[randomFila][randomColumna].addPersonaje(obstaculo);
+		//mapa[randomFila][randomColumna].addPersonaje(obstaculo);
 		obstaculo.setCelda(mapa[randomFila][randomColumna]);
 	  
   }
   
   public void agregarComprable(int fila, int columna, Comprable comprable) {
-	  mapa[fila][columna].addPersonaje(comprable);
+	  mapa[fila][columna].setComprable(comprable);
   }
   
   public Celda celdaArriba(Celda c)

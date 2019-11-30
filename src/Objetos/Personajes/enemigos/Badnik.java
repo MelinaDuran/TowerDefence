@@ -2,6 +2,8 @@ package Objetos.Personajes.enemigos;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import Visitor.ataque.Ataque;
+
 public class Badnik extends Enemigo{
 	
 	public Badnik(){
@@ -15,5 +17,5 @@ public class Badnik extends Enemigo{
 		this.label = new JLabel(sprite);
 		this.movimientoOriginal = 1;
 		this.tienePowerUp = tienePowerUp();
-	}	
+	}
 }

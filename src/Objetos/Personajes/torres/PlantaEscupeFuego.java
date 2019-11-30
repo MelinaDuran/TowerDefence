@@ -1,6 +1,8 @@
 package Objetos.Personajes.torres;
 import javax.swing.*;
 
+import Visitor.ataque.Ataque;
+
 public class PlantaEscupeFuego extends Torre{
 
 	public PlantaEscupeFuego(){
@@ -16,5 +18,4 @@ public class PlantaEscupeFuego extends Torre{
 
 		setCeldaSecundaria(null);
 	}
-
 }

@@ -1,6 +1,8 @@
 package Objetos.Personajes.torres;
 import javax.swing.ImageIcon;
 
+import Visitor.ataque.Ataque;
+
 public class BulletBill extends Torre {
 	public static final double c = 840;
 	public BulletBill(){
@@ -15,5 +17,5 @@ public class BulletBill extends Torre {
 		tamanio = 1;
 		
 		setCeldaSecundaria(null);
-	}	
+	}
 }
