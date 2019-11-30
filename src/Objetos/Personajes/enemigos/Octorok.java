@@ -11,6 +11,7 @@ public class Octorok extends Enemigo
 	{
 		sprite = new ImageIcon("src/Main/resources/Octorok/idle1.gif");
 		this.ataque = 2;
+		this.ataque = 50;
 		this.vida = 200;
 		this.monedas = 700;
 		this.velocidadDeAtaque = 20;
