@@ -10,7 +10,7 @@ import Visitor.ataque.Ataque;
 public class Fantasma extends Enemigo{
 	
 	public Fantasma(){
-		sprite = new ImageIcon("src/Main/resources/Fantasma/idle1.png");
+		sprite = new ImageIcon(this.getClass().getResource("/Main/resources/Fantasma/idle1.png"));
 		this.ataque = 25;
 		this.vida = 55;
 		this.monedas = 100;

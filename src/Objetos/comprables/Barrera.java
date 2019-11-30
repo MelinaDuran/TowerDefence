@@ -12,7 +12,7 @@ public class Barrera extends Comprable{
 	public Barrera(Juego j) {
 		precio=750;
 		vida=500;
-		sprite = new ImageIcon("src/Main/resources/Comprables/Barricada/idle1.png");
+		sprite = new ImageIcon(this.getClass().getResource("/Main/resources/Comprables/Barricada/idle1.png"));
 		label.setIcon(sprite);
 		miJuego = j;
 		activable = false;

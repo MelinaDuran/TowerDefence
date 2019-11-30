@@ -12,7 +12,7 @@ public class Agujero extends Obstaculo{
 		
 		super(100);
 		
-		sprite = new ImageIcon("src/main/resources/obstaculos/agujero.png");
+		sprite = new ImageIcon(this.getClass().getResource("/Main/resources/obstaculos/agujero.png"));
 		
 		this.setSprite(sprite);
 		
