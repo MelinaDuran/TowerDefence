@@ -4,6 +4,8 @@ package Objetos.Personajes.enemigos;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import Visitor.ataque.Ataque;
+
 
 public class Fantasma extends Enemigo{
 	
@@ -18,5 +20,5 @@ public class Fantasma extends Enemigo{
 		this.label = new JLabel(sprite);
 		this.movimientoOriginal = 1;
 		this.tienePowerUp = tienePowerUp();
-	}	
+	}
 }

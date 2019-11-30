@@ -1,5 +1,7 @@
 package Objetos.comprables;
 import Objetos.Personajes.torres.*;
+import Visitor.ataque.Ataque;
+
 import java.util.*;
 
 import javax.swing.ImageIcon;
@@ -18,5 +20,11 @@ public class BoostVida extends Comprable{
 	}
 	
 	public void activar() {}
+
+	@Override
+	public void aceptar(Ataque ataque) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

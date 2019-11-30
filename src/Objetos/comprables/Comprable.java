@@ -1,6 +1,7 @@
 package Objetos.comprables;
 import Main.Juego;
 import Objetos.MapObject;
+import Visitor.ataque.Ataque;
 
 public abstract class Comprable extends MapObject {
 
@@ -24,5 +25,7 @@ public abstract class Comprable extends MapObject {
 		vida=v; 
 	}
 	
-	public abstract void activar();
+	public abstract void activar();		
+	
+	public abstract void aceptar(Ataque a);
 }

@@ -4,6 +4,8 @@ package Objetos.Personajes.enemigos;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import Visitor.ataque.Ataque;
+
 public class Stalfos extends Enemigo{
 	public Stalfos(){
 		sprite = new ImageIcon("src/Main/resources/Stalfos/idle1.gif");

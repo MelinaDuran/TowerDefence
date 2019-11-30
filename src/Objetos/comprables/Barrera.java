@@ -3,6 +3,8 @@ package Objetos.comprables;
 import javax.swing.ImageIcon;
 
 import Main.Juego;
+import Objetos.GameObject;
+import Visitor.ataque.Ataque;
 
 public class Barrera extends Comprable{
 
@@ -25,5 +27,10 @@ public class Barrera extends Comprable{
 	public void activar() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void aceptar(Ataque ataque) {
+		ataque.visitarBarricada(this);
 	}
 }

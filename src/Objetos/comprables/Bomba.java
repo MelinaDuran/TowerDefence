@@ -3,6 +3,7 @@ package Objetos.comprables;
 import javax.swing.ImageIcon;
 
 import Main.Juego;
+import Visitor.ataque.Ataque;
 
 public class Bomba extends Comprable {
 	
@@ -18,6 +19,12 @@ public class Bomba extends Comprable {
 	public void activar() {
 		if (celda.getPersonaje() != null)
 			celda.getPersonaje().setVida(0);
+		
+	}
+
+	@Override
+	public void aceptar(Ataque ataque) {
+		// TODO Auto-generated method stub
 		
 	}
 	

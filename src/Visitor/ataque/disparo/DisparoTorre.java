@@ -1,6 +1,8 @@
 package Visitor.ataque.disparo;
 
+import Objetos.GameObject;
 import Objetos.Personajes.*;
+import Objetos.comprables.Comprable;
 
 public class DisparoTorre extends Disparo {
 
@@ -23,6 +25,24 @@ public class DisparoTorre extends Disparo {
 	public void visitarEnemigoConEscudo(Personaje personaje) {
 		personaje.setVida(0);
 		this.setVida(false);
+	}
+
+	@Override
+	public void visitarObstaculo(GameObject o) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visitarBarricada(Comprable personaje) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visitarBomba(Comprable personaje) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

@@ -1,7 +1,9 @@
 package Objetos;
 import javax.swing.*;
 import Visitor.Visitor;
+import Visitor.ataque.Ataque;
 import Mapa.*;
+import Objetos.Personajes.Personaje;
 
 public abstract class GameObject{
 	

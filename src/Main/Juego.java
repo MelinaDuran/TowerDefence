@@ -250,12 +250,8 @@ public class Juego {
 		if(!enemigos.isEmpty()) {
 		  for (Enemigo enemigo : enemigos) {
 			  Celda celda = enemigo.getCelda();
-			  if (celda.getComprable() != null)
-			  {
-				  celda.getComprable().activar();
-				  gui.sacarDelTablero(celda.getComprable().getLabel());
-			  }
-			  if (celda!=null && (!enemigo.estaMuerto())) {
+			  
+			  if (celda!=null && celda.getComprable() == null && (!enemigo.estaMuerto())) {
 				  if(celda.getJ()!=0) { 
 					  Celda nextCelda = mapa.getCelda(celda.getI(), celda.getJ()-1);
 				 	  if(nextCelda.isEmpty()) {
@@ -267,6 +263,8 @@ public class Juego {
 						  //El enemigo ataca
 						  Ataque ataque = new CuerpoACuerpo(enemigo);
 						  Personaje p = (Personaje) nextCelda.getPersonaje();
+						  celda.getComprable().aceptar(ataque);  
+						  System.out.println("ASDASDASDASD");
 						  p.accept(ataque);							  
 					  }			 	  
 				  	}
