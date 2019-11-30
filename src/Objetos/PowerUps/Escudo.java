@@ -11,7 +11,7 @@ import estadosPersonaje.*;
 public class Escudo extends PowerUp {
 	
 	public Escudo(){
-		miIcono = new ImageIcon("src/Main/resources/Escudo/idle1.gif");
+		miIcono = new ImageIcon(this.getClass().getResource("/Main/resources/Escudo/idle1.gif"));
 		miLabel = new JLabel("");
 		miLabel.setIcon(miIcono);
 	}

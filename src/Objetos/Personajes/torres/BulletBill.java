@@ -6,8 +6,8 @@ import Visitor.ataque.Ataque;
 public class BulletBill extends Torre {
 	public static final double c = 840;
 	public BulletBill(){
-		sprite = new ImageIcon("src/main/resources/Bullet Bill/idle1.gif");
-		spriteDisparo = new ImageIcon("src/main/resources/Bullet Bill/disparo.gif");
+		sprite = new ImageIcon(this.getClass().getResource("/Main/resources/Bullet Bill/idle1.gif"));
+		spriteDisparo = new ImageIcon(this.getClass().getResource("/Main/resources/Bullet Bill/disparo.gif"));
 		ataque = 250;
 		vida = 250;
 		precio = 500;
