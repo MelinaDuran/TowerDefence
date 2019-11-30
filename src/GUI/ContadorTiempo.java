@@ -3,7 +3,7 @@ import Main.Juego;
 
 public class ContadorTiempo extends Thread {
 	private Juego juego;
-	private final int VELOCIDAD = 1000; //en milis
+	private final int VELOCIDAD = 1500; //en milis
 
 	public ContadorTiempo(Juego j) {
 		this.juego = j;

@@ -102,9 +102,11 @@ public class Juego {
 		
 		if (!enemigosNivel.isEmpty()){	
 			Enemigo e = enemigosNivel.removeFirst();
-			randomprote= random.nextInt(2);
+			randomprote= random.nextInt(16);
 			if(randomprote==1) {
-			escudito.aplicar(e);}
+			System.out.println("CREE UN ESCUDITOOOOOOO");
+			escudito.aplicar(e);
+			}
 			enemigos.add(e);
 			mapa.agregarEnemigo(e);
 			gui.agregarAlTablero(e.getLabel(),e.getCelda());
@@ -429,7 +431,7 @@ public class Juego {
 			  							   // tambien lo hace en visitor pero al parecer no lo setea bien 
 			
 		  }
-	  removerDisparos();
+		  removerDisparosEnemigos();
 	}
 	
 	
@@ -446,6 +448,7 @@ public class Juego {
 			deleteDisparosEnemigos();
 			deleteObstaculos();
 			gui.actualizarLabelOleada();	
+			tienda=tienda+1000;
 			
 		}
 		else
