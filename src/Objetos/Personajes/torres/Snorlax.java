@@ -8,7 +8,7 @@ import Visitor.ataque.Ataque;
 public class Snorlax extends Torre{
 	public Snorlax()
 	{
-		sprite = new ImageIcon("src/main/resources/Snorlax/idle1.gif");
+		sprite = new ImageIcon(this.getClass().getResource("/Main/resources/Snorlax/idle1.gif"));
 		spriteDisparo = null;
 		ataque = 0;
 		vida = 700;

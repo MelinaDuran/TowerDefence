@@ -6,8 +6,8 @@ import Visitor.ataque.Ataque;
 public class PlantaEscupeFuego extends Torre{
 
 	public PlantaEscupeFuego(){
-		sprite = new ImageIcon("src/main/resources/PlantaEscupefuego/idle1.gif");
-		spriteDisparo =new ImageIcon("src/main/resources/PlantaEscupefuego/bolafuego.png");
+		sprite = new ImageIcon(this.getClass().getResource("/Main/resources/PlantaEscupefuego/idle1.gif"));
+		spriteDisparo =new ImageIcon(this.getClass().getResource("/Main/resources/PlantaEscupefuego/bolafuego.png"));
 		ataque = 50;
 		vida = 100;
 		precio = 500;

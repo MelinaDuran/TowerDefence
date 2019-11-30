@@ -9,7 +9,7 @@ public class Octorok extends Enemigo
 {
 	public Octorok()
 	{
-		sprite = new ImageIcon("src/Main/resources/Octorok/idle1.gif");
+		sprite = new ImageIcon(this.getClass().getResource("/Main/resources/Octorok/idle1.gif"));
 		this.ataque = 2;
 		this.ataque = 50;
 		this.vida = 200;
@@ -19,7 +19,7 @@ public class Octorok extends Enemigo
 		this.rango = 50;
 		this.label = new JLabel(sprite);
 		this.movimientoOriginal = 1;
-		this.spriteDisparo = new ImageIcon("src/main/resources/Octorok/disparo.gif");
+		this.spriteDisparo = new ImageIcon(this.getClass().getResource("/Main/resources/Octorok/disparo.gif"));
 		this.tienePowerUp = tienePowerUp();
 	}
 }

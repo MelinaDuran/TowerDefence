@@ -7,7 +7,7 @@ import Visitor.ataque.Ataque;
 
 public class LongMoan extends Enemigo{
 	public LongMoan(){
-		sprite = new ImageIcon("src/Main/resources/LongMoan/idle1.gif");
+		sprite = new ImageIcon(this.getClass().getResource("/Main/resources/LongMoan/idle1.gif"));
 		this.ataque = 65;
 		this.vida = 65;
 		this.monedas = 450;
