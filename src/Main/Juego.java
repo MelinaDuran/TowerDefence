@@ -362,6 +362,23 @@ public class Juego {
 		  removerTorresMuertas();
 	 }
 	
+	private synchronized void removerDisparosEnemigos() {
+		  LinkedList<Disparo> disparosUsados = new LinkedList<Disparo>();
+		  for (Disparo d : disparosEnemigos) {
+			  if(!d.getVida()) {
+				  disparosUsados.add(d);
+			  }
+		  }
+		  for(Disparo d : disparosUsados) {
+			  disparosEnemigos.remove(d);
+			  gui.sacarDelTablero(d.getLabel());
+			  d.getCelda().removeDisparo();
+
+		  }
+		  removerMuertos();
+		  removerTorresMuertas();
+	 }
+	
 	
 	public synchronized void moverDisparos() {
 		
@@ -426,6 +443,7 @@ public class Juego {
 			deleteEnemigos();
 			deletePersonajes();
 			deleteDisparos();
+			deleteDisparosEnemigos();
 			deleteObstaculos();
 			gui.actualizarLabelOleada();	
 			
@@ -474,6 +492,14 @@ public class Juego {
 		obstaculos = new LinkedList<Obstaculo>();
 	}
 	
+	
+private synchronized void deleteDisparosEnemigos() {
+		
+		for(Disparo disparo: disparosEnemigos) {
+			disparo.getCelda().removeDisparo();
+			gui.sacarDelTablero(disparo.getLabel());
+		}
+	}
 	
 	// ---------------------------METODO PARA INICIAR LA EJECUCION DE LA GUI-------------------------------------/
 	public static void main(String[] args) {
