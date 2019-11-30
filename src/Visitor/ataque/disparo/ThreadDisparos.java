@@ -45,7 +45,7 @@ public class ThreadDisparos extends Thread {
 						juego.agregarDisparo(personaje.atacar());
 					}
 					for(Enemigo enemigo : enemigos) {
-						juego.agregarDisparo(enemigo.atacar());
+						juego.agregarDisparoEnemigo(enemigo.atacar());
 					}
 					
 					rdm = random.nextInt(6);
