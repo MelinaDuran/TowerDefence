@@ -167,6 +167,8 @@ public class Juego {
 		}
 		if(comprable!=null) { //ACA SE AGREGARIA AL MAPA UN OBJETO QUE COMPRAS
 			mapa.agregarComprable(fila,columna, comprable);
+			gui.agregarAlTablero(comprable.getLabel(), mapa.getCelda(fila, columna));
+			comprable.setCelda(mapa.getCelda(fila, columna));
 			comprable=null;
 		}
 	}
@@ -198,12 +200,12 @@ public class Juego {
 	
 	//HAY QUE APLICARLOS SOBRE LOS JUGADORES O EL MAPA 
 	public void clickSobreComprableBomba() {
-		comprable = new Bomba();
+		comprable = new Bomba(this);
 		tienda = tienda - comprable.getPrecio();
 	}
 	
 	public void clickSobreComprableBarrera() {
-		comprable = new Barrera();
+		comprable = new Barrera(this);
 		tienda = tienda - comprable.getPrecio();
 	}
 	
@@ -241,6 +243,11 @@ public class Juego {
 		if(!enemigos.isEmpty()) {
 		  for (Enemigo enemigo : enemigos) {
 			  Celda celda = enemigo.getCelda();
+			  if (celda.getComprable() != null)
+			  {
+				  celda.getComprable().activar();
+				  gui.sacarDelTablero(celda.getComprable().getLabel());
+			  }
 			  if (celda!=null && (!enemigo.estaMuerto())) {
 				  if(celda.getJ()!=0) { 
 					  Celda nextCelda = mapa.getCelda(celda.getI(), celda.getJ()-1);

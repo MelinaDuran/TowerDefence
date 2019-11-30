@@ -16,5 +16,7 @@ public class BoostVida extends Comprable{
 			torre.setVida(torre.getVida()+20);
 		}
 	}
+	
+	public void activar() {}
 
 }

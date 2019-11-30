@@ -3,26 +3,29 @@ package Mapa;
 
 
 import Objetos.PowerUps.PowerUp;
+import Objetos.comprables.Comprable;
 import Objetos.*;
+import Objetos.Personajes.Personaje;
 import Visitor.ataque.disparo.Disparo;
 
 public class Celda {
    protected int posI;
    protected int posJ;
-   protected GameObject p;
+   protected Personaje p;
    protected Disparo disparo;
    protected PowerUp powerUp;
+   protected Comprable comprable;
 	
    public Celda(int i, int j) {
 	   posI=i;
 	   posJ=j;
    }
    
-   public void addPersonaje(GameObject p) {
+   public void addPersonaje(Personaje p) {
 	   this.p=p;
    }
    
-   public GameObject getPersonaje() {
+   public Personaje getPersonaje() {
 	   return p;
    }
    
@@ -57,5 +60,15 @@ public class Celda {
    public PowerUp getPowerUp()
    {
 	   return powerUp;
+   }
+   
+   public Comprable getComprable()
+   {
+	   return comprable;
+   }
+   
+   public void setComprable(Comprable c)
+   {
+	   comprable = c;
    }
 }

@@ -1,10 +1,12 @@
 package Objetos.comprables;
+import Main.Juego;
 import Objetos.MapObject;
 
 public abstract class Comprable extends MapObject {
 
 	protected int precio; 
 	protected int vida;
+	protected Juego miJuego;
 	
 	public int getPrecio() {
 		return precio;
@@ -21,4 +23,6 @@ public abstract class Comprable extends MapObject {
 	public void setVida(int v) {
 		vida=v; 
 	}
+	
+	public abstract void activar();
 }
