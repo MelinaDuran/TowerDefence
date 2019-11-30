@@ -13,7 +13,7 @@ public class BoostAtaque extends PowerUp {
 	
 	public BoostAtaque()
 	{
-		miIcono = new ImageIcon(this.getClass().getResource("/Main/resources/BoostAtaque/idle1.png"));
+		miIcono = new ImageIcon("src/Main/resources/BoostAtaque/idle1.png");
 		miLabel = new JLabel("");
 		miLabel.setIcon(miIcono);
 	}

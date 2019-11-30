@@ -12,7 +12,7 @@ public class Invulnerabilidad extends PowerUp{
 	private ThreadInvulnerable escudo;
 	
 	public Invulnerabilidad() {
-		miIcono = new ImageIcon(this.getClass().getResource("/Main/resources/Invulnerabilidad/idle1.gif"));
+		miIcono = new ImageIcon("src/Main/resources/Invulnerabilidad/idle1.gif");
 		miLabel = new JLabel("");
 		miLabel.setIcon(miIcono);
 	}

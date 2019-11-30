@@ -92,7 +92,7 @@ public class GUI extends JFrame{
 		lblOleadas.setText(""+juego.getNivel().getNroNivel());
 		
 		JLabel lblMonedita = new JLabel("monedita");
-		lblMonedita.setIcon(new ImageIcon(this.getClass().getResource("/Main/resources/Panel/panel.gif")));
+		lblMonedita.setIcon(new ImageIcon("src/Main/resources/Panel/Panel.gif"));
 		lblMonedita.setBounds(0, 0, 404, 145);
 		Monedas.add(lblMonedita);
 		
@@ -105,7 +105,7 @@ public class GUI extends JFrame{
 		getContentPane().add(Fondo);
 		
 		JLabel Background = new JLabel("");
-		Background.setIcon(new ImageIcon(this.getClass().getResource("/Main/resources/Mapa.jpg")));
+		Background.setIcon(new ImageIcon("src/Main/resources/Mapa.jpg"));
 		Fondo.add(Background);
 		
 		JPanel Comprables = new JPanel();
@@ -118,19 +118,19 @@ public class GUI extends JFrame{
 		Comprables.add(lblObjetosComprables);
 		
 		JButton botonBomba = new JButton("");
-		botonBomba.setIcon(new ImageIcon(this.getClass().getResource("/Main/resources/Comprables/Bomba/botonBomba.gif")));
+		botonBomba.setIcon(new ImageIcon("src/Main/resources/Comprables/Bomba/botonBomba.gif"));
 		botonBomba.setBounds(0, 59, 202, 149);
 		Comprables.add(botonBomba);
 		botonBomba.addActionListener(new OyenteComprarBomba());
 		
 		JButton botonBarrera = new JButton("");
-		botonBarrera.setIcon(new ImageIcon(this.getClass().getResource("/Main/resources/Comprables/Barricada/botonBarrera.gif")));
+		botonBarrera.setIcon(new ImageIcon("src/Main/resources/Comprables/Barricada/botonBarrera.gif"));
 		botonBarrera.setBounds(0, 208, 202, 149);
 		Comprables.add(botonBarrera);
 		botonBarrera.addActionListener(new OyenteComprarBarrera());
 		
 		JButton botonVida = new JButton("");
-		botonVida.setIcon(new ImageIcon(this.getClass().getResource("/Main/resources/Comprables/Vida/botonVida.png")));
+		botonVida.setIcon(new ImageIcon("src/Main/resources/Comprables/Vida/botonVida.png"));
 		botonVida.setBounds(0, 356, 202, 149);
 		Comprables.add(botonVida);
 		botonVida.addActionListener(new OyenteComprarBoostVida()); 
@@ -214,11 +214,11 @@ public void mostrarMensajeGanador()
 			Botonera.add(torres[i]);
 		}
 		
-		ImageIcon botonPlantaEscupeFuego = new ImageIcon(this.getClass().getResource("/Main/resources/BotoneraTorres/BotonPlanta.gif"));
-		ImageIcon botonMegaMan = new ImageIcon(this.getClass().getResource("/Main/resources/BotoneraTorres/BotonMegaMan.gif"));
-		ImageIcon botonDonkeyKong = new ImageIcon(this.getClass().getResource("/Main/resources/BotoneraTorres/BotonDonkeyKong.gif"));
-		ImageIcon botonBulletBill = new ImageIcon(this.getClass().getResource("/Main/resources/BotoneraTorres/BotonBulletBill.gif"));
-		ImageIcon botonSnorlax = new ImageIcon(this.getClass().getResource("/Main/resources/BotoneraTorres/BotonSnorlax.png"));
+		ImageIcon botonPlantaEscupeFuego = new ImageIcon("src/main/resources/BotoneraTorres/BotonPlanta.gif");
+		ImageIcon botonMegaMan = new ImageIcon("src/main/resources/BotoneraTorres/BotonMegaMan.gif");
+		ImageIcon botonDonkeyKong = new ImageIcon("src/main/resources/BotoneraTorres/BotonDonkeyKong.gif");
+		ImageIcon botonBulletBill = new ImageIcon("src/main/resources/BotoneraTorres/BotonBulletBill.gif");
+		ImageIcon botonSnorlax = new ImageIcon("src/main/resources/BotoneraTorres/BotonSnorlax.png");
 		
 		
 		torres[0].setIcon(botonPlantaEscupeFuego);

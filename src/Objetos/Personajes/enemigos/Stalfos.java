@@ -8,7 +8,7 @@ import Visitor.ataque.Ataque;
 
 public class Stalfos extends Enemigo{
 	public Stalfos(){
-		sprite = new ImageIcon(this.getClass().getResource("/Main/resources/Stalfos/idle1.gif"));
+		sprite = new ImageIcon("src/Main/resources/Stalfos/idle1.gif");
 		this.ataque = 75;
 		this.vida = 100;
 		this.monedas = 400;
