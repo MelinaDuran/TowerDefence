@@ -7,8 +7,8 @@ public class DonkeyKong extends Torre{
 	public static final double c = 800;
 	public DonkeyKong(){
 		super();
-		sprite = new ImageIcon(this.getClass().getResource("/Main/resources/Donkey Kong/idle1.gif"));
-		spriteDisparo = new ImageIcon(this.getClass().getResource("/Main/resources/Donkey Kong/disparo.gif"));
+		sprite = new ImageIcon("src/main/resources/Donkey Kong/idle1.gif");
+		spriteDisparo = new ImageIcon("src/main/resources/Donkey Kong/disparo.gif");
 		ataque = 500;
 		this.vida = 350;
 		precio = 600;

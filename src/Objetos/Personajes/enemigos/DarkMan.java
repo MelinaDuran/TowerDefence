@@ -8,7 +8,7 @@ import Visitor.ataque.Ataque;
 
 public class DarkMan extends Enemigo{
 	public DarkMan(){
-		sprite = new ImageIcon(this.getClass().getResource("/Main/resources/DarkMan/idle1.gif"));
+		sprite = new ImageIcon("src/Main/resources/DarkMan/idle1.gif");
 		this.ataque = 150;
 		this.vida = 100;
 		this.monedas = 500;

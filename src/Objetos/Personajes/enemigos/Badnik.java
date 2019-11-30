@@ -7,7 +7,7 @@ import Visitor.ataque.Ataque;
 public class Badnik extends Enemigo{
 	
 	public Badnik(){
-		sprite = new ImageIcon(this.getClass().getResource("/Main/resources/Badnik/idle1.gif"));
+		sprite = new ImageIcon("src/Main/resources/Badnik/idle1.gif");
 		this.ataque = 45;
 		this.vida = 40;
 		this.monedas = 300;

@@ -12,7 +12,7 @@ public class Bomba extends Comprable {
 	public Bomba(Juego j) {
 		precio = 1000;
 		vida=20; //no se usa
-		sprite = new ImageIcon(this.getClass().getResource("/Main/resources/Comprables/Bomba/bomba.png"));
+		sprite = new ImageIcon("src/Main/resources/Comprables/Bomba/bomba.png");
 		label.setIcon(sprite);
 		miJuego = j;
 		activable = true;

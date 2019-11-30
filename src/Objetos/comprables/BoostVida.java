@@ -12,7 +12,7 @@ public class BoostVida extends Comprable{
 	
 	public BoostVida() {
 		precio=550;
-		sprite = new ImageIcon(this.getClass().getResource("/Main/resources/Comprables/Vida/icono.png"));
+		sprite = new ImageIcon("src/Main/resources/Comprables/Vida/icono.png");
 	}
 	
 	public void aplicar(List<Torre> t) {
