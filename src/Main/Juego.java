@@ -39,6 +39,7 @@ public class Juego {
     private List<Personaje> torres;
     private List<Enemigo> enemigos;
     private List<Disparo> disparos;
+    private List<Disparo> disparosEnemigos;
     private List<Enemigo> muertos;
     private List<Obstaculo> obstaculos;
 
@@ -50,6 +51,7 @@ public class Juego {
 		muertos = new ArrayList<Enemigo>();
 		disparos = new LinkedList<Disparo>();
 		obstaculos = new LinkedList<Obstaculo>();
+		disparosEnemigos = new LinkedList<Disparo>();
 		
 		mapa = new Mapa();
 		
@@ -93,14 +95,15 @@ public class Juego {
 	public synchronized void insertarEnemigos() {	
 		LinkedList<Enemigo> enemigosNivel = nivel.getEnemigos();
 		PowerUp escudito= new Escudo();
-		double randomprote;
+		Random random = new Random();
+		int randomprote;
 		
 		
 		
 		if (!enemigosNivel.isEmpty()){	
 			Enemigo e = enemigosNivel.removeFirst();
-			randomprote= Math.random();
-			if(randomprote>0) {
+			randomprote= random.nextInt(2);
+			if(randomprote==1) {
 			escudito.aplicar(e);}
 			enemigos.add(e);
 			mapa.agregarEnemigo(e);
@@ -136,6 +139,10 @@ public class Juego {
 	
 	 public synchronized void agregarDisparo(Disparo d) {
 	  	disparos.add(d);
+	 }
+	 
+	 public synchronized void agregarDisparoEnemigo(Disparo d) {
+		 disparosEnemigos.add(d);
 	 }
 	
 	//JUEGO FINALIZA: PERDÍ PORQUE ENEMIGOS LLEGARON A LA BASE
@@ -362,6 +369,23 @@ public class Juego {
 		  removerTorresMuertas();
 	 }
 	
+	private synchronized void removerDisparosEnemigos() {
+		  LinkedList<Disparo> disparosUsados = new LinkedList<Disparo>();
+		  for (Disparo d : disparosEnemigos) {
+			  if(!d.getVida()) {
+				  disparosUsados.add(d);
+			  }
+		  }
+		  for(Disparo d : disparosUsados) {
+			  disparosEnemigos.remove(d);
+			  gui.sacarDelTablero(d.getLabel());
+			  d.getCelda().removeDisparo();
+
+		  }
+		  removerMuertos();
+		  removerTorresMuertas();
+	 }
+	
 	
 	public synchronized void moverDisparos() {
 		
@@ -388,6 +412,34 @@ public class Juego {
 	  removerDisparos();
 	}
 	
+	
+	
+	public synchronized void moverDisparosEnemigos() {
+		
+		  for (Disparo disparo: disparosEnemigos) {
+			  Celda celdaActual = disparo.getCelda();
+			  
+			  if (celdaActual.getJ()!=0  && this.getEstado() && disparo.getVida()) {
+				  Celda siguienteCelda = mapa.getCelda(celdaActual.getI(),celdaActual.getJ()-1);	  
+				  if (!siguienteCelda.isEmpty()) {
+					  Personaje personaje = (Personaje)siguienteCelda.getPersonaje();
+					  personaje.accept(disparo);
+				  }
+				  else {
+					  celdaActual.removeDisparo();
+					  siguienteCelda.addDisparo(disparo);
+					  disparo.setCelda(siguienteCelda);
+					  gui.agregarAlTablero(disparo.getLabel(), disparo.getCelda());
+				  } 
+			 }
+			  else disparo.setVida(false); //faltaba esto para que los disparos se remuevan cuando lleguen al final,
+			  							   // tambien lo hace en visitor pero al parecer no lo setea bien 
+			
+		  }
+	  removerDisparos();
+	}
+	
+	
 	//CAMBIA DE NIVEL: ACTUALIZA LOS ENEMIGOS Y LOS INSERTA
 	public synchronized void cambiarNivel() {
 			  
@@ -398,6 +450,7 @@ public class Juego {
 			deleteEnemigos();
 			deletePersonajes();
 			deleteDisparos();
+			deleteDisparosEnemigos();
 			deleteObstaculos();
 			gui.actualizarLabelOleada();	
 			
@@ -446,6 +499,14 @@ public class Juego {
 		obstaculos = new LinkedList<Obstaculo>();
 	}
 	
+	
+private synchronized void deleteDisparosEnemigos() {
+		
+		for(Disparo disparo: disparosEnemigos) {
+			disparo.getCelda().removeDisparo();
+			gui.sacarDelTablero(disparo.getLabel());
+		}
+	}
 	
 	// ---------------------------METODO PARA INICIAR LA EJECUCION DE LA GUI-------------------------------------/
 	public static void main(String[] args) {

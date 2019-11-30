@@ -3,6 +3,8 @@ package Visitor.ataque.disparo;
 
 import Main.Juego;
 import Objetos.Personajes.*;
+import Objetos.Personajes.enemigos.Enemigo;
+
 import java.util.*;
 
 public class ThreadDisparos extends Thread {
@@ -35,15 +37,21 @@ public class ThreadDisparos extends Thread {
 				int rdm = random.nextInt(6);
 				
 				List<Personaje> personajes = juego.getTorres();
+				List<Enemigo> enemigos = juego.getEnemigos();
 				
 				if(rdm % 2 ==0 && juego.getEnemigos().size()!=0) {
 					
 					for(Personaje personaje : personajes) {
 						juego.agregarDisparo(personaje.atacar());
 					}
+					for(Enemigo enemigo : enemigos) {
+						juego.agregarDisparoEnemigo(enemigo.atacar());
+					}
+					
 					rdm = random.nextInt(6);
 				}
 				juego.moverDisparos();
+				juego.moverDisparosEnemigos();
 				
 			} catch (InterruptedException e) {
 				e.printStackTrace();
