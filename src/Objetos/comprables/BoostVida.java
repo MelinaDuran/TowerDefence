@@ -1,6 +1,4 @@
 package Objetos.comprables;
-import Objetos.GameObject;
-import Objetos.Personajes.Personaje;
 import Objetos.Personajes.torres.*;
 import Visitor.ataque.Ataque;
 

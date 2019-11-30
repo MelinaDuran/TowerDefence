@@ -2,8 +2,6 @@ package Objetos.Personajes.enemigos;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import Visitor.ataque.Ataque;
-
 public class Badnik extends Enemigo{
 	
 	public Badnik(){

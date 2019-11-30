@@ -4,7 +4,6 @@ package Mapa;
 
 import Objetos.PowerUps.PowerUp;
 import Objetos.comprables.Comprable;
-import Objetos.*;
 import Objetos.Personajes.Personaje;
 import Visitor.ataque.disparo.Disparo;
 

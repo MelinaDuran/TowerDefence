@@ -3,8 +3,6 @@ package Objetos.Personajes.torres;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import Visitor.ataque.Ataque;
-
 public class Snorlax extends Torre{
 	public Snorlax()
 	{

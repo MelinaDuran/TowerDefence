@@ -135,9 +135,11 @@ public class GUI extends JFrame{
 		Comprables.add(botonVida);
 		botonVida.addActionListener(new OyenteComprarBoostVida()); 
 		
-		JButton btnComprable_3 = new JButton("Comprable 4");
-		btnComprable_3.setBounds(0, 504, 202, 149);
-		Comprables.add(btnComprable_3);
+		JButton botonThwomp = new JButton("");
+		botonThwomp.setIcon(new ImageIcon(this.getClass().getResource("/Main/resources/Comprables/Thwomp/botonThwomp.gif")));
+		botonThwomp.setBounds(0, 504, 202, 149);
+		Comprables.add(botonThwomp);
+		botonThwomp.addActionListener(new OyenteComprarThwomp());
 	}
 	
 //-----------------------CONSTRUCTOR------------------------------------------------------------------------/	
@@ -360,4 +362,12 @@ public void mostrarMensajeGanador()
 		}
 	}
 	
-}    
+	private class OyenteComprarThwomp implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			if(Integer.parseInt(juego.getMonedas())>=850) {
+				juego.clickSobreComprableThwomp();
+				cantMonedas.setText(juego.getMonedas());
+			}
+		}
+	}
+} 

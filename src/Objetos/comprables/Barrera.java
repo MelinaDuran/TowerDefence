@@ -3,8 +3,6 @@ package Objetos.comprables;
 import javax.swing.ImageIcon;
 
 import Main.Juego;
-import Objetos.GameObject;
-import Objetos.Personajes.Personaje;
 import Visitor.ataque.Ataque;
 
 public class Barrera extends Comprable{

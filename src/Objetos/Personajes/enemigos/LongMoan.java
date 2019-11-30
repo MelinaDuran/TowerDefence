@@ -3,8 +3,6 @@ package Objetos.Personajes.enemigos;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import Visitor.ataque.Ataque;
-
 public class LongMoan extends Enemigo{
 	public LongMoan(){
 		sprite = new ImageIcon(this.getClass().getResource("/Main/resources/LongMoan/idle1.gif"));

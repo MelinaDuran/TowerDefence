@@ -20,6 +20,7 @@ import Objetos.comprables.Barrera;
 import Objetos.comprables.Bomba;
 import Objetos.comprables.BoostVida;
 import Objetos.comprables.Comprable;
+import Objetos.comprables.Thwomp;
 import Objetos.obstaculos.*;
 
 
@@ -220,6 +221,11 @@ public class Juego {
 	
 	public void clickSobreComprableBoostVida() {
 		comprable = new BoostVida();
+		tienda = tienda - comprable.getPrecio();
+	}
+	
+	public void clickSobreComprableThwomp() {
+		comprable = new Thwomp(this);
 		tienda = tienda - comprable.getPrecio();
 	}
 	//////////////////////////////////////////////////////

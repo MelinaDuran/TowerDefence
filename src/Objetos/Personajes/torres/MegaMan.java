@@ -1,8 +1,6 @@
 package Objetos.Personajes.torres;
 import javax.swing.ImageIcon;
 
-import Visitor.ataque.Ataque;
-
 
 public class MegaMan extends Torre{
 	public static final double c = 500;

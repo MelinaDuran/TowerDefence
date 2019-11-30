@@ -23,14 +23,7 @@ public class CuerpoACuerpo extends Ataque {
 	public void visitarObstaculo(GameObject o) {
 		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public void visitarBarricada(Comprable personaje) {
-			personaje.setVida(personaje.getVida() - this.getAtaque());
-			System.out.println("VIDA BARRERA:"+personaje.getVida());
-	}
-		
+	}		
 
 	@Override
 	public void visitarBomba(Comprable personaje) {

@@ -3,8 +3,6 @@ package Objetos.Personajes.enemigos;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import Visitor.ataque.Ataque;
-
 public class Octorok extends Enemigo
 {
 	public Octorok()
