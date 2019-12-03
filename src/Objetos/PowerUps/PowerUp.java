@@ -39,5 +39,4 @@ public abstract class PowerUp extends GameObject{
 		return 0;
 	}
 	
-	
 }

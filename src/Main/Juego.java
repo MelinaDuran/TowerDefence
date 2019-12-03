@@ -125,9 +125,14 @@ public class Juego {
 	
 	private synchronized void agregarPersonaje(Torre torre, int fila, int columna) {
 		
-		mapa.agregarPersonaje(torre, fila, columna);
-		torres.add(torre);
-		gui.agregarAlTablero(torre.getLabel(), torre.getCelda());
+		Celda celda = mapa.getCelda(fila, columna);
+		
+		if(celda.getPersonaje() == null) {
+			
+			mapa.agregarPersonaje(torre, fila, columna);
+			torres.add(torre);
+			gui.agregarAlTablero(torre.getLabel(), torre.getCelda());
+		}
 		
 		if (torre.getCeldaSecundaria() != null){
 			gui.agregarAlTablero(torre.getSecondLabel(), torre.getCeldaSecundaria());
