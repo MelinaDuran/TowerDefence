@@ -43,4 +43,6 @@ public class DisparoEnemigo extends Disparo {
 		thwomp.recibirDanio(this.getAtaque());
 		this.setVida(false);
 	}
+	
+	public void visitarBoostVida(Comprable boostVida) {}
 }

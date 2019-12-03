@@ -1,8 +1,6 @@
 package Main;
 
 import java.util.*;
-
-
 import java.awt.EventQueue;
 import GUI.ContadorTiempo;
 import GUI.GUI;
@@ -91,16 +89,11 @@ public class Juego {
 	
 	public void setMonedas(int m) {tienda = tienda + m;}
 
-	/**
-	 * Agrega todos los enemigos correspondientes al nivel
-	 */
 	public synchronized void insertarEnemigos() {	
 		LinkedList<Enemigo> enemigosNivel = nivel.getEnemigos();
 		PowerUp escudito= new Escudo();
 		Random random = new Random();
 		int randomprote;
-		
-		
 		
 		if (!enemigosNivel.isEmpty()){	
 			Enemigo e = enemigosNivel.removeFirst();
@@ -149,12 +142,10 @@ public class Juego {
 		 disparosEnemigos.add(d);
 	 }
 	
-	//JUEGO FINALIZA: PERDÍ PORQUE ENEMIGOS LLEGARON A LA BASE
 	 public void terminar() {
 		estado=false;
 		gui.juegoTerminado();
 	}
-	
 	
 	public void clickSobreTablero(int fila, int columna) {
 		if(ultimoComprado!=null) {

@@ -40,6 +40,7 @@ public class CuerpoACuerpo extends Ataque {
 	public void visitarThwomp(Comprable thwomp) {
 		thwomp.recibirDanio(this.getAtaque());
 	}
-
-
+	
+	public void visitarBoostVida(Comprable boostVida) {}
+	
 }

@@ -10,5 +10,7 @@ public class BoostVida extends Comprable{
 		sprite = new ImageIcon(this.getClass().getResource("/Main/resources/Comprables/Vida/icono.png"));
 	}
 
-	public void accept(Visitor visitor) {}
+	public void accept(Visitor visitor) {
+		visitor.visitarBoostVida(this);
+	}
 }

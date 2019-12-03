@@ -12,4 +12,5 @@ public interface Visitor {
 	public abstract void visitarBarricada(Comprable obstaculo);
 	public abstract void visitarBomba(Comprable bomba);
 	public abstract void visitarThwomp(Comprable thwomp);
+	public abstract void visitarBoostVida(Comprable boostVida);
 }

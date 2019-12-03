@@ -23,6 +23,8 @@ public class DisparoTorre extends Disparo {
 		personaje.setVida(0);
 		this.setVida(false);
 	}
+	
+	public void visitarBoostVida(Comprable boostVida) {}
 
 	public void accept(Visitor visitor) {}
 
