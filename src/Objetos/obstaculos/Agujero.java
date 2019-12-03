@@ -2,6 +2,8 @@ package Objetos.obstaculos;
 
 import javax.swing.ImageIcon;
 
+import Visitor.Visitor;
+
 public class Agujero extends Obstaculo{
 
 	public Agujero() {
@@ -13,4 +15,9 @@ public class Agujero extends Obstaculo{
 		this.setSprite(sprite);
 		
 	}
+
+	public void accept(Visitor visitor) {
+		
+	}
+	
 }

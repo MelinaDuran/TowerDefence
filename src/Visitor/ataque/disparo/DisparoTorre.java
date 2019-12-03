@@ -1,8 +1,9 @@
 package Visitor.ataque.disparo;
 
-import Objetos.GameObject;
 import Objetos.Personajes.*;
-import Objetos.comprables.Comprable;
+import Objetos.obstaculos.Obstaculo;
+import Visitor.Visitor;
+import Objetos.comprables.*;
 
 public class DisparoTorre extends Disparo {
 
@@ -12,14 +13,10 @@ public class DisparoTorre extends Disparo {
 	
 	public void visitarTorre(Personaje personaje) {	}
 
-	//Se encarga de la acción que produce un disparo en el ENEMIGO
 	public void visitarEnemigo(Personaje personaje) {
-
-		//LE RESTO VIDA => LOS CONTROLES DE SI ES POSIBLE SE REALIZAN EN RESTARVIDA()
 		personaje.restarVida(this.getAtaque());
 		System.out.println("VIDA DEL ENEMIGO: "+personaje.getVida());
-		this.setVida(false); //al parecer no estaria seteandolo bien
-		
+		this.setVida(false);
 	}
 	
 	public void visitarEnemigoConEscudo(Personaje personaje) {
@@ -27,21 +24,18 @@ public class DisparoTorre extends Disparo {
 		this.setVida(false);
 	}
 
-	@Override
-	public void visitarObstaculo(GameObject o) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void accept(Visitor visitor) {}
 
-	@Override
-	public void visitarBarricada(Comprable personaje) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void visitarPiedra(Obstaculo o) {}
 
-	@Override
-	public void visitarBomba(Comprable personaje) {
-		// TODO Auto-generated method stub
-		
-	}	
+	public void visitarAgujero(Obstaculo obstaculo) {}
+
+	public void visitarBarricada(Obstaculo obstaculo) {}
+
+	public void visitarBomba(Comprable bomba) {}
+
+	public void visitarThwomp(Comprable thwomp) {}
+	
+	
+
 }

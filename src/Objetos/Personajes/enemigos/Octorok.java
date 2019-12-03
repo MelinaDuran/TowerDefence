@@ -3,6 +3,9 @@ package Objetos.Personajes.enemigos;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import Visitor.Visitor;
+import Visitor.ataque.disparo.DisparoEnemigo;
+
 public class Octorok extends Enemigo
 {
 	public Octorok()
@@ -19,5 +22,13 @@ public class Octorok extends Enemigo
 		this.movimientoOriginal = 1;
 		this.spriteDisparo = new ImageIcon(this.getClass().getResource("/Main/resources/Octorok/disparo.gif"));
 		this.tienePowerUp = tienePowerUp();
+		visitor = new DisparoEnemigo(this);
+
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visitarEnemigo(this);
+		
 	}
 }

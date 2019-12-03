@@ -1,41 +1,44 @@
 package Mapa;
 
 
-
+import Objetos.GameObject;
 import Objetos.PowerUps.PowerUp;
-import Objetos.comprables.Comprable;
-import Objetos.Personajes.Personaje;
-import Visitor.ataque.disparo.Disparo;
 
 public class Celda {
    protected int posI;
    protected int posJ;
-   protected Personaje p;
-   protected Disparo disparo;
-   protected PowerUp powerUp;
-   protected Comprable comprable;
+//   protected Personaje p;
+//   protected Disparo disparo;
+//   protected PowerUp powerUp;
+//   protected Comprable comprable;
+   
+   
+   protected GameObject personaje;
+   protected GameObject disparo;
+   protected GameObject powerUp;
+   protected GameObject comprable;
 	
    public Celda(int i, int j) {
 	   posI=i;
 	   posJ=j;
    }
    
-   public void addPersonaje(Personaje p) {
-	   this.p=p;
+   public void addPersonaje(GameObject p) {
+	   this.personaje=p;
    }
    
-   public Personaje getPersonaje() {
-	   return p;
+   public GameObject getPersonaje() {
+	   return personaje;
    }
    
    public void removePersonaje() {
-	   p=null;
+	   personaje=null;
    }
    public void removeDisparo() {
 	   disparo=null;
    }
    
-   public void addDisparo(Disparo d) {
+   public void addDisparo(GameObject d) {
 	   disparo =d;
    }
    
@@ -48,26 +51,22 @@ public class Celda {
    }
    
    public boolean isEmpty() {
-	   return p==null; 
+	   return personaje==null; 
    }
    
-   public void addPowerUp(PowerUp p)
-   {
-	   powerUp = p;
+   public void addPowerUp(GameObject powerUp){
+	   this.powerUp = powerUp;
    }
    
-   public PowerUp getPowerUp()
-   {
-	   return powerUp;
+   public PowerUp getPowerUp(){
+	   return (PowerUp) this.powerUp;
    }
    
-   public Comprable getComprable()
-   {
+   public GameObject getComprable(){
 	   return comprable;
    }
    
-   public void setComprable(Comprable c)
-   {
+   public void setComprable(GameObject c){
 	   comprable = c;
    }
 }

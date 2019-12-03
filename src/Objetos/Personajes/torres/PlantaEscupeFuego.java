@@ -1,6 +1,9 @@
 package Objetos.Personajes.torres;
 import javax.swing.*;
 
+import Visitor.Visitor;
+import Visitor.ataque.disparo.DisparoTorre;
+
 public class PlantaEscupeFuego extends Torre{
 
 	public PlantaEscupeFuego(){
@@ -13,7 +16,12 @@ public class PlantaEscupeFuego extends Torre{
 		tamanio = 1;
 		velocidadDeAtaque = 1.6;
 		label.setIcon(sprite);
-
+		visitor = new DisparoTorre(this);
 		setCeldaSecundaria(null);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visitarTorre(this);
 	}
 }

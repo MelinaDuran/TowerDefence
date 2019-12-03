@@ -6,8 +6,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import Objetos.Personajes.*;
+import Visitor.Visitor;
+import Objetos.GameObject;
 
-public abstract class PowerUp {
+public abstract class PowerUp extends GameObject{
 	
 	protected JLabel miLabel;
 	protected ImageIcon miIcono;
@@ -29,6 +31,12 @@ public abstract class PowerUp {
 	public ImageIcon getIcon()
 	{
 		return miIcono;
+	}
+	
+	public void accept(Visitor visitor) {}
+	
+	public int getVida() {
+		return 0;
 	}
 	
 	

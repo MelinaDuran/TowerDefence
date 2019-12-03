@@ -1,13 +1,15 @@
 package Visitor;
-import Objetos.GameObject;
 import Objetos.Personajes.*;
-import Objetos.comprables.Comprable;
+import Objetos.obstaculos.Obstaculo;
+import Objetos.comprables.*;
 
 public interface Visitor {
 	
 	public abstract void visitarTorre(Personaje personaje);
 	public abstract void visitarEnemigo(Personaje Personaje);
-	public abstract void visitarObstaculo(GameObject o);
-	public abstract void visitarBarricada(Comprable personaje);
-	public abstract void visitarBomba(Comprable personaje);
+	public abstract void visitarPiedra(Obstaculo obstaculo); 
+	public abstract void visitarAgujero(Obstaculo obstaculo);
+	public abstract void visitarBarricada(Comprable obstaculo);
+	public abstract void visitarBomba(Comprable bomba);
+	public abstract void visitarThwomp(Comprable thwomp);
 }

@@ -22,6 +22,7 @@ import Objetos.comprables.BoostVida;
 import Objetos.comprables.Comprable;
 import Objetos.comprables.Thwomp;
 import Objetos.obstaculos.*;
+import Objetos.GameObject;
 
 
 public class Juego {
@@ -253,14 +254,15 @@ public class Juego {
 	
 	/**
 	 * Mueve los enemigos del mapa. Se encarga, tambien, de cambiar de nivel cuando sea necesario.
+	 * Tambien agrega comprables al mapa y define el ataque. 
 	 **/
 	public synchronized boolean moverEnemigos() {
 		if(!enemigos.isEmpty()) {
 		  for (Enemigo enemigo : enemigos) {
 			  Celda celda = enemigo.getCelda();
-			  if (celda.getComprable() != null && celda.getComprable().getActivable())
-			  {
-				  celda.getComprable().activar();
+			  if (celda.getComprable() != null) {
+				  //celda.getComprable().activar();
+				  //Aca hay que hacer que el enemigo se choque con el comprable
 				  gui.sacarDelTablero(celda.getComprable().getLabel());
 				  celda.setComprable(null);
 			  }
@@ -276,41 +278,31 @@ public class Juego {
 						  //El enemigo ataca
 						  Ataque ataque = new CuerpoACuerpo(enemigo);
 						  if (nextCelda.getPersonaje() != null) {
-							  Personaje p = nextCelda.getPersonaje();
+							  GameObject p = nextCelda.getPersonaje();
 							  p.accept(ataque);	
 						  }
 						  
-						  if (nextCelda.getComprable()!= null && !(nextCelda.getComprable().getActivable())) {
-							  Comprable c = nextCelda.getComprable();
-							  c.aceptar(ataque);
-							  if (c.getVida() < 1)
-							  {
-								  gui.sacarDelTablero(c.getLabel());
+						  if (nextCelda.getComprable()!= null) {
+							  GameObject comprable = nextCelda.getComprable();
+							  comprable.accept(ataque);
+							  if (comprable.getVida() < 1){
+								  gui.sacarDelTablero(comprable.getLabel());
 								  nextCelda.setComprable(null);
 							  }
 						  }
-						  else
-						  {
-							  if (nextCelda.getComprable() != null && nextCelda.getComprable().getActivable())
-							  {
-								  celda.removePersonaje();			  
-								  nextCelda.addPersonaje(enemigo);
-								  enemigo.setCelda(nextCelda);
-								  gui.agregarAlTablero(enemigo.getLabel(), enemigo.getCelda());
-							  }
-						  }
-							  						  
-					  }			 	  
-				  	}
-				  else if(celda.getJ()==0) terminar(); //ESTO TERMINA EL JUEGO 
+					  }
+				  	}else 
+				  		if(celda.getJ()==0) 
+				  			terminar();
 			  	}
 		  }
 		  return true;
-		} else {// se murieron enmegios 2 cosas: 1 pase de nivel o gane el juego
+		  
+		}else {// se murieron enmegios 2 cosas: 1 pase de nivel o gane el juego
 			System.out.println("fin de nivel");
 			this.cambiarNivel();
 			return false;
-		}
+	}
 }
 	  
 	
@@ -325,7 +317,7 @@ public class Juego {
 		  for(Enemigo muerto : muertos) {
 			  if (muerto.getTienePowerUp())
 			  {
-				  int aux = rnd.nextInt(3);
+				  int aux = rnd.nextInt(3); //ARREGLAR PARA QUE NO SIEMPRE TENGAN POWER UP 
 				  Celda c = muerto.getCelda();
 				  PowerUp pow;
 				  
@@ -387,7 +379,7 @@ public class Juego {
 	private synchronized void removerDisparos() {
 		  LinkedList<Disparo> disparosUsados = new LinkedList<Disparo>();
 		  for (Disparo d : disparos) {
-			  if(!d.getVida()) {
+			  if(!d.tieneVida()) {
 				  disparosUsados.add(d);
 			  }
 		  }
@@ -404,7 +396,7 @@ public class Juego {
 	private synchronized void removerDisparosEnemigos() {
 		  LinkedList<Disparo> disparosUsados = new LinkedList<Disparo>();
 		  for (Disparo d : disparosEnemigos) {
-			  if(!d.getVida()) {
+			  if(!d.tieneVida()) {
 				  disparosUsados.add(d);
 			  }
 		  }
@@ -424,7 +416,7 @@ public class Juego {
 		  for (Disparo disparo: disparos) {
 			  Celda celdaActual = disparo.getCelda();
 			  
-			  if (celdaActual.getJ()!=9  && this.getEstado() && disparo.getVida()) {
+			  if (celdaActual.getJ()!=9  && this.getEstado() && disparo.tieneVida()) {
 				  Celda siguienteCelda = mapa.getCelda(celdaActual.getI(),celdaActual.getJ()+1);	  
 				  if (!siguienteCelda.isEmpty()) {
 					  Personaje personaje = (Personaje)siguienteCelda.getPersonaje();
@@ -452,7 +444,7 @@ public class Juego {
 		  for (Disparo disparo: disparosEnemigos) {
 			  Celda celdaActual = disparo.getCelda();
 			  
-			  if (celdaActual.getJ()!=0  && this.getEstado() && disparo.getVida()) {
+			  if (celdaActual.getJ()!=0  && this.getEstado() && disparo.tieneVida()) {
 				  Celda siguienteCelda = mapa.getCelda(celdaActual.getI(),celdaActual.getJ()-1);	  
 				  if (!siguienteCelda.isEmpty()) {
 					  Personaje personaje = (Personaje)siguienteCelda.getPersonaje();
@@ -460,8 +452,8 @@ public class Juego {
 				  }
 				  else {
 					  
-					  if (siguienteCelda.getComprable() != null && !siguienteCelda.getComprable().getActivable())
-						  siguienteCelda.getComprable().aceptar(disparo);
+					  if (siguienteCelda.getComprable() != null)
+						  siguienteCelda.getComprable().accept(disparo);
 					  
 					  celdaActual.removeDisparo();
 					  siguienteCelda.addDisparo(disparo);

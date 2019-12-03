@@ -4,6 +4,9 @@ package Objetos.Personajes.enemigos;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import Visitor.Visitor;
+import Visitor.ataque.disparo.DisparoEnemigo;
+
 
 public class Fantasma extends Enemigo{
 	
@@ -18,5 +21,12 @@ public class Fantasma extends Enemigo{
 		this.label = new JLabel(sprite);
 		this.movimientoOriginal = 1;
 		this.tienePowerUp = tienePowerUp();
+		visitor = new DisparoEnemigo(this);
+
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visitarEnemigo(this);
 	}
 }

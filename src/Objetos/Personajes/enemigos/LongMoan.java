@@ -3,6 +3,9 @@ package Objetos.Personajes.enemigos;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import Visitor.Visitor;
+import Visitor.ataque.disparo.DisparoEnemigo;
+
 public class LongMoan extends Enemigo{
 	public LongMoan(){
 		sprite = new ImageIcon(this.getClass().getResource("/Main/resources/LongMoan/idle1.gif"));
@@ -15,5 +18,11 @@ public class LongMoan extends Enemigo{
 		this.label = new JLabel(sprite);
 		this.movimientoOriginal = 1;
 		this.tienePowerUp = tienePowerUp();
+		visitor = new DisparoEnemigo(this);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visitarEnemigo(this);
 	}
 }

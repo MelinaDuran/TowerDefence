@@ -4,6 +4,9 @@ package Objetos.Personajes.enemigos;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import Visitor.Visitor;
+import Visitor.ataque.disparo.DisparoEnemigo;
+
 public class Stalfos extends Enemigo{
 	public Stalfos(){
 		sprite = new ImageIcon(this.getClass().getResource("/Main/resources/Stalfos/idle1.gif"));
@@ -15,5 +18,12 @@ public class Stalfos extends Enemigo{
 		this.rango = 0;
 		this.label = new JLabel(sprite);
 		this.movimientoOriginal = 2;
+		visitor = new DisparoEnemigo(this);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visitarEnemigo(this);
+		
 	}
 }

@@ -20,7 +20,10 @@ public abstract class Disparo extends Ataque{
 	   setSprite(personaje.getSpriteDisparo());
    }
    
-   public boolean getVida() {
+   
+   //HAY QUE ARREGLAR ESTO PORQUE SE TIENE QUE LLAMAR DIFERENTE AL DE LA CLASE GAME OBJECT
+   
+   public boolean tieneVida() {
 	   return estaVivo;
    }
    

@@ -3,6 +3,9 @@ package Objetos.Personajes.torres;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import Visitor.Visitor;
+import Visitor.ataque.disparo.DisparoTorre;
+
 public class Snorlax extends Torre{
 	public Snorlax()
 	{
@@ -17,6 +20,14 @@ public class Snorlax extends Torre{
 		label.setIcon(sprite);
 		secondLabel = new JLabel();
 		secondLabel.setIcon(sprite);
+		visitor = new DisparoTorre(this);
 		setCeldaSecundaria(null);
 	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visitarTorre(this);
+	}
+	
+	
 }

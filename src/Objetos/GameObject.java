@@ -9,6 +9,7 @@ public abstract class GameObject{
 	protected Visitor miVisitor;
 	protected JLabel label = new JLabel();
 	protected Celda celda;
+	
 
 	public JLabel getLabel(){
 		if(this.label == null) this.label = new JLabel(sprite);
@@ -27,4 +28,8 @@ public abstract class GameObject{
 	public void setCelda(Celda celda) {
 		this.celda = celda;
 	}
+	
+	public abstract int getVida();
+	
+	public abstract void accept(Visitor visitor); 
 }

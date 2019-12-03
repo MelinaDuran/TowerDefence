@@ -4,6 +4,7 @@ import javax.swing.JLabel;
 
 import Mapa.Celda;
 import Objetos.GameObject;
+import Visitor.Visitor;
 import Visitor.ataque.*;
 import Visitor.ataque.disparo.Disparo;
 import estadosPersonaje.*;
@@ -19,7 +20,7 @@ public abstract class Personaje extends GameObject {
 	protected int tamanio;
 	protected JLabel secondLabel;	
 	protected Estado estado;
-	
+	protected Visitor visitor;
 	private int precio;
 	
 	public Personaje() {

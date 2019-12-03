@@ -1,14 +1,12 @@
 package Objetos.comprables;
 import Main.Juego;
 import Objetos.MapObject;
-import Visitor.ataque.Ataque;
 
 public abstract class Comprable extends MapObject {
 
 	protected int precio; 
 	protected int vida;
 	protected Juego miJuego;
-	protected boolean activable;
 	
 	public int getPrecio() {
 		return precio;
@@ -26,9 +24,10 @@ public abstract class Comprable extends MapObject {
 		vida=v; 
 	}
 	
-	public abstract void activar();		
-	
-	public abstract void aceptar(Ataque a);
-	
-	public boolean getActivable() {return activable;}
+	public void recibirDanio(int ataque) {
+		if(vida>ataque)
+			vida = vida - ataque;
+		else
+			vida=0;
+	}
 }

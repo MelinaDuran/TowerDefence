@@ -1,6 +1,6 @@
 package Objetos.comprables;
 import Objetos.Personajes.torres.*;
-import Visitor.ataque.Ataque;
+import Visitor.Visitor;
 
 import java.util.*;
 
@@ -18,12 +18,6 @@ public class BoostVida extends Comprable{
 			torre.setVida(torre.getVida()+20);
 		}
 	}
-	
-	public void activar() {}
 
-	@Override
-	public void aceptar(Ataque ataque) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void accept(Visitor visitor) {}
 }
