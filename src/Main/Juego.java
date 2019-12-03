@@ -217,8 +217,15 @@ public class Juego {
 	}
 	
 	public void clickSobreComprableBoostVida() {
-		comprable = new BoostVida();
-		tienda = tienda - comprable.getPrecio();
+		if (!torres.isEmpty())
+		{
+			comprable = new BoostVida();
+			tienda = tienda - comprable.getPrecio();
+			
+			for (Personaje t: torres)
+				t.setVida(t.getVida() + 100);
+		}
+		comprable = null;
 	}
 	
 	public void clickSobreComprableThwomp() {
