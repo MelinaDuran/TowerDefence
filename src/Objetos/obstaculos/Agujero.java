@@ -11,6 +11,7 @@ public class Agujero extends Obstaculo{
 		super(100);
 		
 		sprite = new ImageIcon(this.getClass().getResource("/Main/resources/obstaculos/agujero.png"));
+		label.setIcon(sprite);
 		
 		this.setSprite(sprite);
 		

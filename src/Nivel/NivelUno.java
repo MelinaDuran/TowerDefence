@@ -11,6 +11,7 @@ public class NivelUno extends Nivel {
 	}
 	
 	public Nivel pasarDeNivel(Mapa mapa) {
+		obstaculos.clear();
 		return new NivelDos(mapa);
 	}
 }

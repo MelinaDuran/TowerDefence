@@ -62,15 +62,28 @@ public abstract class Nivel  {
 	
 	public void crearObstaculos(int cantidad) {
 		//ACA TENES QUE HACER ESTO PARA AGREGAR A LOS OBSTACULOS MELINASTI
-		int rdm = random.nextInt(1);
+		int rdm = random.nextInt(2);
+		int rdmI;
+		int rdmJ;
+		Obstaculo o;
 		while(obstaculos.size()<cantidad) {
-			if(rdm==0)
-				obstaculos.add(new Piedra());
-			else
-				if(rdm==1)
-					obstaculos.add(new Agujero());
-			rdm = random.nextInt(1);
+			if(rdm==0)	
+			{
+				o = new Agujero();
+				System.out.println("CREADO AGUJERO");
 			}
+			else
+			{
+				o = new Piedra();
+				System.out.println("CREADA PIEDRA");
+			}
+			
+			rdmJ = random.nextInt(10);
+			rdmI = random.nextInt(6);
+			o.setCelda(mapa.getCelda(rdmI, rdmJ));
+			obstaculos.add(o);
+			rdm = random.nextInt(1);
+		}
 		
 	}
 	

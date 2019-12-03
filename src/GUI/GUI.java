@@ -72,8 +72,10 @@ public class GUI extends JFrame{
 		btnPowerUp.addActionListener(new OyenteClickPowerUp());
 		Monedas.add(btnPowerUp);
 		
-		btnVender = new JButton("Vender");
+		btnVender = new JButton();
 		btnVender.setBounds(207, 79, 171, 41);
+		btnVender.setIcon(new ImageIcon(this.getClass().getResource("/Main/resources/Panel/venderTorre.gif")));
+		btnVender.setHorizontalAlignment(SwingConstants.CENTER);
 		Monedas.add(btnVender);
 		btnVender.addActionListener(new OyenteClickVenta());
 		cantMonedas = new JLabel(juego.getMonedas());
@@ -114,6 +116,7 @@ public class GUI extends JFrame{
 		Comprables.setLayout(null);
 		
 		JLabel lblObjetosComprables = new JLabel("Objetos Comprables");
+		lblObjetosComprables.setIcon(new ImageIcon(this.getClass().getResource("/Main/resources/Comprables/panelTienda.gif")));
 		lblObjetosComprables.setBounds(0, 0, 202, 57);
 		Comprables.add(lblObjetosComprables);
 		
@@ -237,6 +240,9 @@ public void mostrarMensajeGanador()
 		torres[2].addActionListener(new OyenteClickDK());
 		torres[3].addActionListener(new OyenteClickBB());
 		torres[4].addActionListener(new OyenteClickSN());
+		
+		for (int i = 0; i < 5; i++)
+			torres[i].setHorizontalAlignment(SwingConstants.CENTER);
 		
 
 	}	

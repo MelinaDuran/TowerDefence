@@ -10,9 +10,9 @@ public class Piedra extends Obstaculo {
 		
 		super(100);
 		
-		sprite = new ImageIcon("");
-		
+		sprite = new ImageIcon(this.getClass().getResource("/Main/resources/obstaculos/piedra.png"));
 		this.setSprite(sprite);
+		label.setIcon(sprite);
 		
 	}
 

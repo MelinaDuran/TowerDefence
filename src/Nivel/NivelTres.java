@@ -13,6 +13,7 @@ public class NivelTres extends Nivel {
 	}
 	
 	public Nivel pasarDeNivel(Mapa mapa) {
+		obstaculos.clear();
 		return null;
 	}
 }
