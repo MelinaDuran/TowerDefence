@@ -59,7 +59,7 @@ public class Juego {
 		
 		nivel = new NivelUno(mapa);	
 		
-		tienda=2500;
+		tienda=25000000;
 		estado=true;
 		
 		gui = new GUI(this);

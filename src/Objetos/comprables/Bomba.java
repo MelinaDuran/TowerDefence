@@ -15,7 +15,6 @@ public class Bomba extends Comprable {
 		miJuego = j;
 	}
 
-	@Override
 	public void accept(Visitor visitor) {
 		visitor.visitarBomba(this);
 	}

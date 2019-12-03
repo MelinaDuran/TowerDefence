@@ -15,8 +15,6 @@ public class Barrera extends Comprable{
 		miJuego = j;
 	}
 
-	public void activar() {}
-
 	public void accept(Visitor visitor) {
 		visitor.visitarBarricada(this);
 	}

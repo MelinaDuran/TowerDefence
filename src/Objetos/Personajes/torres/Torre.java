@@ -3,10 +3,8 @@ package Objetos.Personajes.torres;
 import Mapa.*;
 import Objetos.GameObject;
 import Objetos.Personajes.Personaje;
-import Visitor.Visitor;
 import Visitor.ataque.*;
 import Visitor.ataque.disparo.Disparo;
-import Visitor.ataque.disparo.DisparoTorre;
 
 public abstract class Torre extends Personaje{
 	
