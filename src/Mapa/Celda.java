@@ -17,6 +17,7 @@ public class Celda {
    protected GameObject disparo;
    protected GameObject powerUp;
    protected GameObject comprable;
+   protected GameObject obstaculo; 
 	
    public Celda(int i, int j) {
 	   posI=i;
@@ -68,5 +69,14 @@ public class Celda {
    
    public void setComprable(GameObject c){
 	   comprable = c;
+   }
+   
+   public void setObstaculo(GameObject c) {
+	   obstaculo = c;
+	   System.out.println("AGREGE EL OBSTACULO EN LA CELDA");
+   }
+   
+   public GameObject getObstaculo() {
+	   return obstaculo; 
    }
 }

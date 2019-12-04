@@ -29,6 +29,7 @@ public class CuerpoACuerpo extends Ataque {
 
 	public void visitarAgujero(Obstaculo obstaculo) {
 		this.getPersonaje().setVida(0);
+		obstaculo.setVida(0);
 	}
 		
 	public void accept(Visitor visitor) {}

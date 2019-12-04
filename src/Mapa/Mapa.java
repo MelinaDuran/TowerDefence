@@ -46,12 +46,10 @@ public class Mapa {
 		celda.addPersonaje(t);
 	  	t.setCelda(celda);
 	  	
-	  	if (t.getTamanio() == 2)
-	  	{
+	  	if (t.getTamanio() == 2){
 	  		Celda arriba = celdaArriba(celda);
 	  		t.setCeldaSecundaria(arriba);
-	  		if (arriba.isEmpty())
-	  		{
+	  		if (arriba.isEmpty()){
 	  			arriba.addPersonaje(t);
 	  		}
 	  	}
@@ -62,8 +60,9 @@ public class Mapa {
 	  
 	  	int randomColumna = rdm.nextInt(10);
 	  	int randomFila = rdm.nextInt(6);
-		//mapa[randomFila][randomColumna].addPersonaje(obstaculo);
 		obstaculo.setCelda(mapa[randomFila][randomColumna]);
+		mapa[randomFila][randomColumna].setObstaculo(obstaculo);
+		System.out.println("AGREGE EL OBSTACULO");
 	  
   }
   

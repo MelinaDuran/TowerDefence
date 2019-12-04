@@ -260,14 +260,12 @@ public void mostrarMensajeGanador()
 			int alto = Tablero.getHeight()/6;
 			int columna = e.getX()/ancho;
 			int fila = e.getY()/alto; 
-			if (juego.getModoVenta())
-			{
+			if (juego.getModoVenta()){
 				Celda c = juego.seleccionarVenta(fila, columna);
 				juego.vender(c);
 				juego.setModoVenta(false);
 			}
-			else
-			{
+			else{
 				juego.clickSobreTablero(fila, columna);
 			}
 		}

@@ -272,7 +272,7 @@ public class Juego {
 			  if (celda!=null && (!enemigo.estaMuerto())) {
 				  if(celda.getJ()!=0) { 
 					  Celda nextCelda = mapa.getCelda(celda.getI(), celda.getJ()-1);
-				 	  if(nextCelda.isEmpty() && nextCelda.getComprable() == null) {
+				 	  if(nextCelda.isEmpty() && nextCelda.getComprable() == null && nextCelda.getObstaculo()==null) {
 						  celda.removePersonaje();			  
 						  nextCelda.addPersonaje(enemigo);
 						  enemigo.setCelda(nextCelda);
@@ -292,6 +292,12 @@ public class Juego {
 								  gui.sacarDelTablero(comprable.getLabel());
 								  nextCelda.setComprable(null);
 							  }
+						  }
+						  if(nextCelda.getObstaculo()!=null) {
+							  System.out.println("HAY UN OBSTACULOOOOOOAAA");
+							  nextCelda.getObstaculo().accept(ataque);
+							  gui.sacarDelTablero(nextCelda.getObstaculo().getLabel());
+							  nextCelda.setObstaculo(null);
 						  }
 					  }
 				  	}else 
@@ -318,8 +324,7 @@ public class Juego {
 		  }
 		  
 		  for(Enemigo muerto : muertos) {
-			  if (muerto.getTienePowerUp())
-			  {
+			  if (muerto.getTienePowerUp()) {
 				  int aux = rnd.nextInt(3); //ARREGLAR PARA QUE NO SIEMPRE TENGAN POWER UP 
 				  Celda c = muerto.getCelda();
 				  PowerUp pow;
@@ -367,8 +372,7 @@ public class Juego {
 			  torres.remove(muerto);
 			  muerto.getCelda().removePersonaje();
 			  
-			  if (muerto.getTamanio() == 2)
-			  {
+			  if (muerto.getTamanio() == 2){
 				  Celda aux = mapa.getCelda(muerto.getCeldaSecundaria().getI(), muerto.getCeldaSecundaria().getJ());
 				  gui.sacarDelTablero(muerto.getSecondLabel());
 				  aux.removePersonaje();
@@ -474,9 +478,8 @@ public class Juego {
 	
 	//CAMBIA DE NIVEL: ACTUALIZA LOS ENEMIGOS Y LOS INSERTA
 	public synchronized void cambiarNivel() {
-			  
 		this.nivel=nivel.pasarDeNivel(mapa);
-		
+	
 		if (nivel!=null) {
 			
 			deleteEnemigos();
@@ -484,29 +487,25 @@ public class Juego {
 			deleteDisparos();
 			deleteDisparosEnemigos();
 			deleteObstaculos();
+			insertarObstaculos();
 			gui.actualizarLabelOleada();	
 			tienda=tienda+1000;
 			
 		}
 		else
-		{
 			gui.mostrarMensajeGanador();
-		}
+		
 	}
 	//METODO ENCARGADO DE ELIMINAR LOS PERSONAJES PARA ARRANCAR UN NUEVO NIVEL
-	private void deletePersonajes() {
-		
+	private void deletePersonajes() {	
 		for(Personaje torre: torres) {
 			torre.getCelda().removePersonaje();
 			gui.sacarDelTablero(torre.getLabel());
 		}
-		
 		torres = new LinkedList<Personaje>();
-		
 	}
 	
 	private synchronized void deleteDisparos() {
-		
 		for(Disparo disparo: disparos) {
 			disparo.getCelda().removeDisparo();
 			gui.sacarDelTablero(disparo.getLabel());
@@ -514,12 +513,10 @@ public class Juego {
 	}
 	
 	private synchronized void deleteEnemigos() {
-		
 		for(Enemigo enemigo: enemigos) {
 			enemigo.getCelda().removePersonaje();
 			gui.sacarDelTablero(enemigo.getLabel());
 		}
-		
 		enemigos = new LinkedList<Enemigo>();
 	}
 	
@@ -528,13 +525,11 @@ public class Juego {
 			obstaculo.getCelda().removePersonaje();
 			gui.sacarDelTablero(obstaculo.getLabel());
 		}
-		
 		obstaculos = new LinkedList<Obstaculo>();
 	}
 	
 	
-private synchronized void deleteDisparosEnemigos() {
-		
+	private synchronized void deleteDisparosEnemigos() {
 		for(Disparo disparo: disparosEnemigos) {
 			disparo.getCelda().removeDisparo();
 			gui.sacarDelTablero(disparo.getLabel());

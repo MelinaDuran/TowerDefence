@@ -18,7 +18,7 @@ public class Agujero extends Obstaculo{
 	}
 
 	public void accept(Visitor visitor) {
-		
+		visitor.visitarAgujero(this);
 	}
 	
 }
