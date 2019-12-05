@@ -6,7 +6,7 @@ import Mapa.*;
 public abstract class GameObject{
 	
 	protected Icon sprite;
-	protected Visitor miVisitor;
+	//protected Visitor miVisitor;
 	protected JLabel label = new JLabel();
 	protected Celda celda;
 	
