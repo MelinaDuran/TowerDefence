@@ -70,8 +70,7 @@ public class Mapa {
 	  mapa[fila][columna].setComprable(comprable);
   }
   
-  public Celda celdaArriba(Celda c)
-  {
+  public Celda celdaArriba(Celda c){
 	  int i;
 	  int j;
 	  

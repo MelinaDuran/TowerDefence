@@ -118,25 +118,20 @@ public class Juego {
 				mapa.agregarObstaculo(obstaculo);
 				gui.agregarAlTablero(obstaculo.getLabel(), obstaculo.getCelda());
 			}
-			
 		}
-		
 	}
 	
 	private synchronized void agregarPersonaje(Torre torre, int fila, int columna) {
-		
 		Celda celda = mapa.getCelda(fila, columna);
 		
 		if(celda.getPersonaje() == null) {
-			
 			mapa.agregarPersonaje(torre, fila, columna);
 			torres.add(torre);
 			gui.agregarAlTablero(torre.getLabel(), torre.getCelda());
 		}
 		
-		if (torre.getCeldaSecundaria() != null){
+		if (torre.getCeldaSecundaria() != null)
 			gui.agregarAlTablero(torre.getSecondLabel(), torre.getCeldaSecundaria());
-		}
 	}
 	
 	 public synchronized void agregarDisparo(Disparo d) {
@@ -181,8 +176,8 @@ public class Juego {
 	}
 
 	public void clickSobrePEF() {
-			ultimoComprado = new PlantaEscupeFuego();
-			tienda = tienda-ultimoComprado.getPrecio();
+		ultimoComprado = new PlantaEscupeFuego();
+		tienda = tienda-ultimoComprado.getPrecio();
 	}
 	
 	public void clickSobreMM() {
@@ -217,8 +212,7 @@ public class Juego {
 	}
 	
 	public void clickSobreComprableBoostVida() {
-		if (!torres.isEmpty())
-		{
+		if (!torres.isEmpty()){
 			comprable = new BoostVida();
 			tienda = tienda - comprable.getPrecio();
 			
@@ -419,7 +413,6 @@ public class Juego {
 	
 	
 	public synchronized void moverDisparos() {
-		
 		  for (Disparo disparo: disparos) {
 			  Celda celdaActual = disparo.getCelda();
 			  
@@ -427,8 +420,7 @@ public class Juego {
 				  Celda siguienteCelda = mapa.getCelda(celdaActual.getI(),celdaActual.getJ()+1);	  
 				  if (!siguienteCelda.isEmpty()) {
 					  Personaje personaje = (Personaje)siguienteCelda.getPersonaje();
-					  personaje.accept(disparo);
-					  
+					  personaje.accept(disparo);  
 				  }
 				  else {
 					  celdaActual.removeDisparo();
@@ -443,8 +435,6 @@ public class Juego {
 		  }
 	  removerDisparos();
 	}
-	
-	
 	
 	public synchronized void moverDisparosEnemigos() {
 		
@@ -470,7 +460,6 @@ public class Juego {
 			 }
 			  else disparo.setVida(false); //faltaba esto para que los disparos se remuevan cuando lleguen al final,
 			  							   // tambien lo hace en visitor pero al parecer no lo setea bien 
-			
 		  }
 		  removerDisparosEnemigos();
 	}
@@ -481,7 +470,6 @@ public class Juego {
 		this.nivel=nivel.pasarDeNivel(mapa);
 	
 		if (nivel!=null) {
-			
 			deleteEnemigos();
 			deletePersonajes();
 			deleteDisparos();
@@ -490,9 +478,7 @@ public class Juego {
 			insertarObstaculos();
 			gui.actualizarLabelOleada();	
 			tienda=tienda+1000;
-			
-		}
-		else
+		}else
 			gui.mostrarMensajeGanador();
 		
 	}
@@ -543,7 +529,6 @@ public class Juego {
 				try {
 					new Juego();
 				}catch (Exception e) {
-					
 					e.printStackTrace();
 				}
 			}

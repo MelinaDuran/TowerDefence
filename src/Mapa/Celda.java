@@ -6,13 +6,7 @@ import Objetos.PowerUps.PowerUp;
 
 public class Celda {
    protected int posI;
-   protected int posJ;
-//   protected Personaje p;
-//   protected Disparo disparo;
-//   protected PowerUp powerUp;
-//   protected Comprable comprable;
-   
-   
+   protected int posJ;  
    protected GameObject personaje;
    protected GameObject disparo;
    protected GameObject powerUp;

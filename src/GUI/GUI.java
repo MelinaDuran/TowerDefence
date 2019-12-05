@@ -58,8 +58,6 @@ public class GUI extends JFrame{
 		Botonera.setBounds(0, 508, 779, 145);
 		getContentPane().add(Botonera);
 		
-		
-			
 		Monedas = new JPanel();
 		Monedas.setBorder(new LineBorder(new Color(0, 0, 0)));
 		Monedas.setBounds(778, 508, 404, 145);
@@ -97,9 +95,7 @@ public class GUI extends JFrame{
 		lblMonedita.setIcon(new ImageIcon(this.getClass().getResource("/Main/resources/Panel/panel.gif")));
 		lblMonedita.setBounds(0, 0, 404, 145);
 		Monedas.add(lblMonedita);
-		
-		
-		
+
 		getContentPane().setLayout(null);		
 
 		JPanel Fondo = new JPanel();
@@ -193,22 +189,19 @@ public class GUI extends JFrame{
 
 	}
 	
-	public void actualizarBotonPowerUp(ImageIcon j)
-	{
+	public void actualizarBotonPowerUp(ImageIcon j){
 		btnPowerUp.setIcon(j);
 		btnPowerUp.setEnabled(true);
 	}
 	
-	public void actualizarLabelOleada()
-	{
+	public void actualizarLabelOleada(){
 		lblOleadas.setText(""+juego.getNivel().getNroNivel());
 	}
 //-----------------------COMANDOS------------------------------------------------------------------------/	
-public void mostrarMensajeGanador()
-{
-	JOptionPane.showMessageDialog(getContentPane(),"Ganador!");
-	System.exit(0);
-}
+	public void mostrarMensajeGanador(){
+		JOptionPane.showMessageDialog(getContentPane(),"Ganador!");
+		System.exit(0);
+	}
 //---------------------------BOTONES PARA COMPRAR TORRES-----------------------------------------------------/
 	private void inicializarBotonesTorres() {
 		torres = new JButton[5];
@@ -224,7 +217,6 @@ public void mostrarMensajeGanador()
 		ImageIcon botonDonkeyKong = new ImageIcon(this.getClass().getResource("/Main/resources/BotoneraTorres/BotonDonkeyKong.gif"));
 		ImageIcon botonBulletBill = new ImageIcon(this.getClass().getResource("/Main/resources/BotoneraTorres/BotonBulletBill.gif"));
 		ImageIcon botonSnorlax = new ImageIcon(this.getClass().getResource("/Main/resources/BotoneraTorres/BotonSnorlax.png"));
-		
 		
 		torres[0].setIcon(botonPlantaEscupeFuego);
 		torres[1].setIcon(botonMegaMan);
@@ -242,16 +234,10 @@ public void mostrarMensajeGanador()
 		torres[4].addActionListener(new OyenteClickSN());
 		
 		for (int i = 0; i < 5; i++)
-			torres[i].setHorizontalAlignment(SwingConstants.CENTER);
-		
-
+			torres[i].setHorizontalAlignment(SwingConstants.CENTER);	
 	}	
 //---------------------------BOTONES PARA COMPRAR TORRES----------------------------------------------------/
 	
-//---------------------------PANEL PARA VER MONEDAS---------------------------------------------------------/
-
-
-//---------------------------PANEL PARA VER MONEDAS---------------------------------------------------------/
 	
 //---------------------------OYENTE TABLERO DE JUEGO---------------------------------------------------------/
 	private class OyenteClickTablero extends MouseAdapter{
