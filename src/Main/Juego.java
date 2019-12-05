@@ -244,8 +244,12 @@ public class Juego {
 	public void vender(Celda c){
 		if (!c.isEmpty()){
 			Personaje p =  (Personaje) c.getPersonaje();
-			tienda = tienda + p.getMonedas();
-			p.setVida(0);
+			for(Personaje torre : torres) {
+				if(torre==p) {
+					tienda = tienda + p.getMonedas();
+					p.setVida(0);
+				}
+			}
 		}
 	}
 	
